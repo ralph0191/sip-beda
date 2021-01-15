@@ -12,8 +12,8 @@ class Student extends Model
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'user_id','first_name','middle_name','last_name','email',
-        'birthday','employee_num','address','mobile_number','picture'
+        'user_id','first_name','middle_name','last_name','email', 'course_id',
+        'student_number', 'birthday','address','mobile_number','picture'
     ];
     
     protected $table = 'students';
