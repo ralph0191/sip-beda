@@ -13,10 +13,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('home');
 });
 
 Auth::routes();
 
+Route::get('/courses', 'App\Http\Controllers\CourseController@getAllCourses');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['middleware' => ['student']], function () {
+
+    Route::get('/student/pre-internship', function () {
+        return view('students/pre-internship');
+    });
+    Route::get('/student/intent-form', function () {
+        return view('students/intent-form');
+    });
+
+    Route::get('/student/intent-form/approved', 'App\Http\Controllers\IntentFormController@approvedIntentForm');
+
+    Route::get('/student/pre-internship', function () {
+        return view('students/pre-internship');
+    });
+});
+
+
+
+
+

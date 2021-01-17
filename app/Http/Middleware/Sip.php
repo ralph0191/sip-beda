@@ -3,10 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
 use Illuminate\Http\Request;
 
-class Student
+class Sip
 {
     /**
      * Handle an incoming request.
@@ -21,15 +20,15 @@ class Student
             return redirect()->route('/login');
         }
         
-        if (Auth::user()->sip) {
-            return redirect()->route('/sip/home');
+        if (Auth::user()->student) {
+            return redirect()->route('/home');
         }
 
         if (Auth::user()->deptChair) {
             return redirect()->route('/dept-chair/home');
         }
 
-        if (Auth::user()->student) {
+        if (Auth::user()->sip) {
             return $next($request);
         }
     }

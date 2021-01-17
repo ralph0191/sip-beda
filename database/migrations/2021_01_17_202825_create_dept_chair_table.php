@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSipTable extends Migration
+class CreateDeptChairTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSipTable extends Migration
      */
     public function up()
     {
-        Schema::create('sip', function (Blueprint $table) {
+        Schema::create('dept_chair', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('first_name')->default('');
@@ -39,6 +39,6 @@ class CreateSipTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sip');
+        Schema::dropIfExists('dept_chair');
     }
 }

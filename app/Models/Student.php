@@ -13,7 +13,7 @@ class Student extends Model
 
     protected $fillable = [
         'user_id','first_name','middle_name','last_name','email', 'course_id',
-        'student_number', 'birthday','address','mobile_number','picture'
+        'student_number', 'birthday','address','mobile_number','picture', 'degree', 'course'
     ];
     
     protected $table = 'students';
@@ -23,10 +23,10 @@ class Student extends Model
     }
 
     public function course() {
-        return $this->hasOne(Course::class, 'course_id');
+        return $this->belongsTo(Course::class, 'course_id');
     }
 
     public function studentProgress() {
-        return $this->hasOne(StudentProgress::class,'user_id');
+        return $this->hasOne(StudentProgress::class,'id');
     }
 }
