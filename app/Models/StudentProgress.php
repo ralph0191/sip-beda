@@ -11,7 +11,7 @@ class StudentProgress extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'student_id','read_form','pre_internship_progress','end_internship_progress'
+        'student_id','read_form','pre_internship_progress', 'during_internship_progress','end_internship_progress'
     ];
     
     protected $table = 'student_progress';

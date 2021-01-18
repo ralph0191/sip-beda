@@ -15,7 +15,7 @@ class CreateInternshipRequirements extends Migration
     {
         Schema::create('internship_requirements', function (Blueprint $table) {
             $table->id();
-            $table->string('desc');
+            $table->text('desc');
             $table->string('file_url');
             $table->tinyInteger('internship_type');
             $table->timestamps();
