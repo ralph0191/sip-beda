@@ -10,8 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/global.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/util.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/library/alertify.min.js') }} "></script>
+    <script type="text/javascript" src="{{ asset('js/library/pagination.min.js') }} "></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -99,11 +105,7 @@
                 </div>
             </nav>
             @yield('content')
-        @endif  
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/moment.js') }}"></script>
-        <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        @endif
     </div>
 </body>
 </html>

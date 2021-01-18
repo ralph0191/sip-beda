@@ -14,7 +14,7 @@ class StudentProgress extends Model
         'student_id','read_form','pre_internship_progress','end_internship_progress'
     ];
     
-    protected $table = 'students_progress';
+    protected $table = 'student_progress';
 
     public function student() {
         return $this->belongsTo(Student::class, 'student_id');
