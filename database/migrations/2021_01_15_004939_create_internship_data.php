@@ -17,11 +17,12 @@ class CreateInternshipData extends Migration
             $table->id();
             $table->bigInteger('student_id')->unsigned();
             $table->bigInteger('internship_requirements_id')->unsigned();
-            $table->string('file_url');
-            $table->string('remarks');
+            $table->string('file_url')->defaults('');
+            $table->string('remarks')->defaults('');
+            $table->tinyInteger('status');
             
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreign('internship_requirements_id')->references('id')->on('internship_requirements')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('internship_requirements_id')->references('id')->on('internship_requirements');
             $table->timestamps();
             $table->softDeletes();
         });

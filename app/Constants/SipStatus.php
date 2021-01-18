@@ -25,6 +25,10 @@ Class SipStatus {
     const PRE_WRITTING_CONSENT = 8;
     const PRE_COR = 9;
     const PRE_ATTENDANCE = 10;
+
+    const PRE_INTERNSHIP = 0;
+    const DURING_INTERNSHIP = 1;
+    const END_INTERNSHIP = 2;
     
 
 }

@@ -29,4 +29,8 @@ class Student extends Model
     public function studentProgress() {
         return $this->hasOne(StudentProgress::class,'id');
     }
+
+    public function internshipData() {
+        return $this->hasMany(internshipData::class, 'id');
+    }
 }
