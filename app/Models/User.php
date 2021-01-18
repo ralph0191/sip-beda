@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -53,6 +54,6 @@ class User extends Authenticatable
     }
 
     public function deptChair() {
-        return $this->hasOne(Sip::class, 'id');
+        return $this->hasOne(DeptChair::class, 'id');
     }
 }

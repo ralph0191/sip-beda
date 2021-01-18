@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+    public const INTENT_FORM = '/student/intent-form';
 
     /**
      * The controller namespace for the application.

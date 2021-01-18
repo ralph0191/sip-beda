@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Sip;
 
 class SipSeeder extends Seeder
 {
@@ -13,9 +14,15 @@ class SipSeeder extends Seeder
      */
     public function run()
     {
-        Role::insert([
-            'id' => '1',
-            'role_name' => 'superadmin'
+
+
+        Sip::insert([
+            'user_id' => 1,
+            'first_name' => 'sip',
+            'last_name' => 'sip',
+            'email'     => 'sip@email.com',
+            'birthday'  =>  '1991-12-31',
+            'employee_number' => '00000000'
         ]);
     }
 }

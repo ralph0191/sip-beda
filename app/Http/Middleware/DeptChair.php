@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
 use Illuminate\Http\Request;
+use Auth;
+use App\Constants\SipStatus;
 
-class Student
+class DeptChair
 {
     /**
      * Handle an incoming request.
@@ -21,15 +22,15 @@ class Student
             return redirect()->route('/login');
         }
         
-        if (Auth::user()->sip) {
+        if (Auth::user()->role_id == SipStatus::STUDENT) {
+            return redirect()->route('/home');
+        }
+
+        if (Auth::user()->role_id == SipStatus::SIP) {
             return redirect()->route('/sip/home');
         }
 
-        if (Auth::user()->role_id == 2) {
-            return redirect()->route('home');
-        }
-
-        if (Auth::user()->student) {
+        if (Auth::user()->deptChair) {
             return $next($request);
         }
     }

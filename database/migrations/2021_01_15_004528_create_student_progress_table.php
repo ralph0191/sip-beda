@@ -16,10 +16,10 @@ class CreateStudentProgressTable extends Migration
         Schema::create('student_progress', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('student_id')->unsigned();
-            $table->tinyInteger('read_form');
-            $table->tinyInteger('pre_internship_progress');
-            $table->tinyInteger('during_internship_progress');
-            $table->tinyInteger('end_internship_progress');
+            $table->tinyInteger('read_form')->default(0);
+            $table->tinyInteger('pre_internship_progress')->default(0);
+            $table->tinyInteger('during_internship_progress')->default(0);
+            $table->tinyInteger('end_internship_progress')->default(0);
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
