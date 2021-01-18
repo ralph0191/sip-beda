@@ -12,7 +12,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th scope="col">Desc</th>
+                <th scope="col" width="800">Desc</th>
                 <th scope="col">Files</th>
                 <th scope="col">Remarks</th>
                 <th scope="col">Status</th>
@@ -34,14 +34,17 @@
                             "No Data"
                         @elseif ($data->status == 1)
                             "Pending"
-                        @elseif ($data->status->approved)
+                        @elseif ($data->status == 2)
                             "Approved"
                         @endif
                     </td>
                     
                     <td>
-                        <button class="btn btn-danger" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
+                        @if ($data->status == 1 || $data->status == 0)
+                            <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
+                            <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
+                        @endif
+                        
                     </td>
                 </tr>
                 @endforeach
@@ -54,7 +57,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Approving File From User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add a Remark for the user</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -54,4 +54,11 @@ class PreInternshipController extends Controller
 
         return view('sip.pre-internship-table', compact('students'));
     }
+
+    public function sipApprovedFile(Request $request)
+    {
+        error_log($request->status);
+
+        return view('sip.pre-internship-table', compact('students'));
+    }
 }
