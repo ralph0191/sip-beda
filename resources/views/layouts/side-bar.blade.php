@@ -18,8 +18,8 @@
       @elseif (Auth::user()->role_id == 1)
         <a href="/home" class="list-group-item list-group-item-action">Dashboard</a>
         <a href="/sip/pre-internship-table" class="list-group-item list-group-item-action ">Pre-Internship</a>
-        <a href="/sip/during-internship-table" class="list-group-item list-group-item-action ">During-Internship</a>
-        <a href="/sip/post-internship" class="list-group-item list-group-item-action ">Post-Internship</a>
+        <a href="#" class="list-group-item list-group-item-action ">During-Internship</a>
+        <a href="#" class="list-group-item list-group-item-action ">Post-Internship</a>
       @elseif (Auth::user()->role_id == 2)
         
         <a href="/dept-chair/intent-form" class="list-group-item list-group-item-action ">Intent-Forms</a>
