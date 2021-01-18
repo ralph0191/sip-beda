@@ -11,7 +11,7 @@ class InternshipData extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'student_id','internship_requirement_id','file_url',
+        'student_id','internship_requirements_id','file_url',
         'remarks','status','internship_type'
     ];
 
@@ -22,7 +22,7 @@ class InternshipData extends Model
     }
 
     public function internshipRequirements() {
-        return $this->belongsTo(InternshipRequirements::class, 'student_id');
+        return $this->belongsTo(InternshipRequirements::class, 'internship_requirements_id');
     }
 
 }
