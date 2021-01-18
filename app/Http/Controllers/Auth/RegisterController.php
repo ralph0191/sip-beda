@@ -55,7 +55,8 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'course' => ['required', 'string']
+            'course' => ['required', 'string'],
+            // 'student_number' => ['required']
         ]);
     }
 
@@ -68,9 +69,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => 'samp',
+            'name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => 0
         ]);
 
         $user->student()->create([
@@ -83,8 +85,7 @@ class RegisterController extends Controller
             'birthday'          => now(),
             'mobile_number'     => $data['mobile_number'],
             'picture'           => '',
-            'course'            => $data['course'],
-            'course_id'         => 1
+            'course_id'         => $data['course']
         ]);
 
         $user->student->studentProgress()->create([

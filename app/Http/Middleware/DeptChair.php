@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
+use App\Constants\SipStatus;
 
 class DeptChair
 {
@@ -20,11 +22,11 @@ class DeptChair
             return redirect()->route('/login');
         }
         
-        if (Auth::user()->student) {
+        if (Auth::user()->role_id == SipStatus::STUDENT) {
             return redirect()->route('/home');
         }
 
-        if (Auth::user()->sip) {
+        if (Auth::user()->role_id == SipStatus::SIP) {
             return redirect()->route('/sip/home');
         }
 

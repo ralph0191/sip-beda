@@ -25,7 +25,7 @@ Route::get('/courses', 'App\Http\Controllers\CourseController@getAllCourses');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middleware' => ['student']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/student/pre-internship', function () {
         return view('students/pre-internship');
@@ -39,7 +39,19 @@ Route::group(['middleware' => ['student']], function () {
     Route::get('/student/pre-internship', function () {
         return view('students/pre-internship');
     });
+
+
+    Route::get('/dept-chair/intent-form', 'App\Http\Controllers\IntentFormController@deptChairView');
+    Route::get('/dept-chair/during-internship', 'App\Http\Controllers\IntentFormController@deptChairView');
+    Route::get('/dept-chair/end-of-internship', 'App\Http\Controllers\IntentFormController@deptChairView');
+
+    Route::get('/dept-chair/intent-form/approved/{id}' , 'App\Http\Controllers\IntentFormController@deptChairApproved');
 });
+
+
+// Route::group(['middleware' => ['deptchair']], function () {
+   
+// });
 
 
 

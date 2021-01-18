@@ -25,8 +25,8 @@ class Student
             return redirect()->route('/sip/home');
         }
 
-        if (Auth::user()->deptChair) {
-            return redirect()->route('/dept-chair/home');
+        if (Auth::user()->role_id == 2) {
+            return redirect()->route('home');
         }
 
         if (Auth::user()->student) {

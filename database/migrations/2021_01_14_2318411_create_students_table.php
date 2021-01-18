@@ -26,7 +26,6 @@ class CreateStudentsTable extends Migration
             $table->string('bachelors')->default('');
             $table->string('mobile_number')->default('');
             $table->string('picture')->default('');
-            $table->string('course')->default('');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('course_id')->references('id')->on('courses');

@@ -16,6 +16,7 @@ class CreateDeptChairTable extends Migration
         Schema::create('dept_chair', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('course_id')->unsigned();
             $table->string('first_name')->default('');
             $table->string('middle_name')->default('');
             $table->string('last_name')->default('');
@@ -26,7 +27,8 @@ class CreateDeptChairTable extends Migration
             $table->string('mobile_number')->default('');
             $table->string('picture')->default('');
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
             $table->softDeletes();
         });

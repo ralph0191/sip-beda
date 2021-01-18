@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- {{Auth::user()->student->}} --}}
     @if (Auth::user()) 
     <div class="container-fluid">
         <h1 class="mt-4">Intent Form</h1>
@@ -68,12 +67,12 @@
 
 
         <div class="form-group row">
-            <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Course') }}</label>
+            <label for="course" class="col-md-2 col-form-label text-md-right">{{ __('Course') }}</label>
 
             <div class="col-md-4">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->student->course }}" disabled autocomplete="email">
+                <input id="course" type="course" class="form-control @error('course') is-invalid @enderror" name="course" value="{{ Auth::user()->student->course->name }}" disabled>
 
-                @error('email')
+                @error('course')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

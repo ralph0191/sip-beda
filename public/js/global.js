@@ -57,7 +57,6 @@ function defineStatus() {
 }
 
 function defineMessages() { 
-	console.log('HttpStatus.SUCCESS');
 	var tryAgainClause = "\n Please try again. \n If the problem persists, \n please contact info@mdirect.com.";
 	
 	Message = {
@@ -191,6 +190,35 @@ function defineAjaxRequest() {
 				url: url + id,
 				type: "PUT",
 				data: JSON.stringify(data),
+				dataType: "json",
+				contentType: "application/json",
+				mimeType: "application/json",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+			}).done(function(response) {
+				switch(response.status) {
+					case HttpStatus.SUCCESS:
+						alertify.success(Message.SUCCESS_UPDATE);
+                        break;
+                    case HttpStatus.NO_CONTENT:
+                        alertify.warning(Message.NO_CONTENT);
+                        break;
+                    case HttpStatus.UNKNOWN_STATUS:
+                        alertify.error(Message.UNKNOWN_STATUS);
+                        break;
+                    case HttpStatus.UNPROCESSABLE_ENTITY:
+                        alertify.error(Message.UNPROCESSABLE_ENTITY);
+                        break;
+					case HttpStatus.INTERNAL_SERVER_ERROR:
+						alertify.error(Message.INTERNAL_SERVER_ERROR);
+						break;
+				}
+			});
+		},
+
+		updateWithoutData : function(url,id) {
+			return $.ajax({
+				url: url + id,
+				type: "PUT",
 				dataType: "json",
 				contentType: "application/json",
 				mimeType: "application/json",

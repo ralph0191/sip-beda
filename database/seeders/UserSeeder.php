@@ -16,9 +16,18 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::insert([
-            'name' => 'sip',
-            'email' => 'sip@email.com',
-            'password' => Hash::make('password')
+            [
+                'name' => 'sip',
+                'email' => 'sip@email.com',
+                'password' => Hash::make('password'),
+                'role_id' => 1
+            ],
+            [
+                'name' => 'deptchair',
+                'email' => 'deptchair@email.com',
+                'password' => Hash::make('password'),
+                'role_id' => 2
+            ],
         ]);
     }
 }

@@ -12,7 +12,7 @@ const initCoursesDropDown=()=> {
                 let courses = response.course;
                 for (i = 0; i < courses.length; i++) {
                     console.log(courses[i]);
-                    $("#course").append($("<option/>").attr("value", courses[i]).html(courses[i]));
+                    $("#course").append($("<option/>").attr("value", courses[i].id).html(courses[i].name));
                 }
                 $("#course").trigger("contentChanged");
             break;  

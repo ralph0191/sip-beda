@@ -10,7 +10,7 @@ class CourseController extends Controller
 {
     public function getAllCourses() 
     {
-        $courses = Course::pluck('name');
+        $courses = Course::all();
         return response()->json(['status' => Response::HTTP_OK,'course' => $courses]);
     }
 }
