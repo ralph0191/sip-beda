@@ -27,7 +27,7 @@ const attachListenerDeclineBtn=()=> {
         e.preventDefault();
         let id = $(this).data('id');
         $('#data-id').val(id);
-        $('#status').val(0);
+        $('#status').val(4);
     });
 }
 
@@ -35,27 +35,32 @@ const attachListenerApprovedBtn=()=> {
     $(document).on("click", ".approve-listener",function(e) {
         e.preventDefault();
         let id = $(this).data('id');
-        $('#data-id').value(id);
-        $('#status').val(1);
+        $('#data-id').val(id);
+        $('#status').val(2);
     });
 }
 
 const attachListenerSaveBtn=()=> {
    
     
-    $(document).on("click", ".approve-listener",function(e) {
+    $(document).on("click", "#btn-save",function(e) {
         let info = {};
         info.status =  $('#status').val();
         info.studentId =  $('#id').val();
         info.dataId  = $('#data-id').val();
-        info.dataId  = $('#remarks').val();
+        info.remarks  = $('#remarks').val();
 
-        $.when(ajax.fetchWithData('/sip/pre-internship/approve-file/', info)).done(function(response) {
+        $.when(ajax.create('/sip/pre-internship/approve-file/', info)).done(function(response) {
             switch(response.status) {
            
                 case HttpStatus.SUCCESS:
-                    alert('Student is now completed.');
-                    redirect('/sip/pre-internship-table' ,1000);
+                    if (status == 2) {
+                        alert('Student file have been accepted.');
+                    } else {
+                        alert('Student file have been Declined.');
+                    }
+                    
+                    redirect('/sip/pre-student-view/' + info.studentId ,1000);
                 break;  
             }
         });

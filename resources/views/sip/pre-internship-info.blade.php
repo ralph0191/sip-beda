@@ -31,11 +31,13 @@
                     <td>{{$data->remarks}}</td>
                     <td>
                         @if ($data->status == 0)
-                            "No Data"
+                            No Data
                         @elseif ($data->status == 1)
-                            "Pending"
+                            Pending
                         @elseif ($data->status == 2)
-                            "Approved"
+                            Approved
+                        @elseif ($data->status == 4)
+                            Declined
                         @endif
                     </td>
                     

@@ -7,7 +7,7 @@ Class SipStatus {
     const PENDING = 1;
     const APPROVED = 2;
     const APPROVED_BOTH = 3;
-    const DECLINED = 4;
+    const DISAPPROVED = 4;
 
 
     const STUDENT = 0;
@@ -30,5 +30,7 @@ Class SipStatus {
     const DURING_INTERNSHIP = 1;
     const END_INTERNSHIP = 2;
     
+    const ACCEPTED = 1;
+    const DECLINED = 2;
 
 }

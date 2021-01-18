@@ -57,8 +57,11 @@ class PreInternshipController extends Controller
 
     public function sipApprovedFile(Request $request)
     {
-        error_log($request->status);
+        $internData = InternshipData::where('id', $request->dataId)->first();
+        $internData->status = $request->status;
+        $internData->remarks = $request->remarks;
+        $internData->update();
 
-        return view('sip.pre-internship-table', compact('students'));
+        return response()->json(['status' => Response::HTTP_OK]);
     }
 }
