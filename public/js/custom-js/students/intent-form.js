@@ -3,8 +3,7 @@ $(document).ready(function(){
 });
 
 const attachListenerIntentFormBtn=()=> {
-
-
+    
     $(document).on("click", "#intent-form-btn",function(e) {
         e.preventDefault();
         $.when(ajax.fetch('/student/intent-form/approved')).done(function(response) {

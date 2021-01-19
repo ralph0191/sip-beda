@@ -25,4 +25,8 @@ class InternshipData extends Model
         return $this->belongsTo(InternshipRequirements::class, 'internship_requirements_id');
     }
 
+    public function internshipFiles() {
+        return $this->hasMany(InternshipFiles::class);
+    }
+
 }

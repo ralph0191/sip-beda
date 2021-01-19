@@ -43,7 +43,7 @@ class IntentFormController extends Controller
         $studentProgress->pre_internship_progress = SipStatus::PENDING;
         $studentProgress->update();
         
-        for ($i = 1; $i < 18; $i++) {
+        for ($i = 1; $i < 19; $i++) {
             if ($i == 1) {
                 InternshipData::insert([
                     [
@@ -54,7 +54,7 @@ class IntentFormController extends Controller
                         'status'    => SipStatus::APPROVED
                     ],
                 ]);
-            } else {
+            } else  {
                 InternshipData::insert([
                     [
                         'student_id' => $id,
