@@ -26,7 +26,12 @@
                         {{$data->internshipRequirements->desc}}
                     </td>
                     <td>
-                        {{$data->file_url}}
+                        @if (count($data->internshipFiles) > 0)
+                            @foreach ($data->internshipFiles as $file)
+                                <a href="#">{{$file->file_name }}</a>
+                            @endforeach
+                        @endif
+                        
                     </td>
                     <td>{{$data->remarks}}</td>
                     <td>

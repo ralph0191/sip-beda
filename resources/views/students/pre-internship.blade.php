@@ -3,7 +3,13 @@
 @section('content')
     @if (Auth::user()) 
         <br/>
-        <h4>Pre-Internship Requirements</h4>
+        <h2>Pre-Internship Requirements</h2>
+
+        <h4>Downloadable Files</h4>
+        <a href="pre-internship/download-file/SIP-Endorsement">Endorsement Form</a>
+        <br/>
+        <a href="pre-internship/download-file/SIP-Agreement">Internship Agreement Form</a>
+
         <button class="btn btn-primary float-right" style="margin-right: 50px; margin-bottom:10px;"data-toggle="modal" data-target="#addFileModal">Add Attachment</button>
         <table class="table table-bordered">
             <thead>
@@ -26,20 +32,24 @@
                     </td>
                     <td></td>
                     <td>
-                        @if ($data->status == 0)
-                            "No Data"
-                        @elseif ($data->status == 1)
-                            "Pending"
-                        @elseif ($data->status == 2)
-                            "Approved"
+                        <label id="{{'label-' . $data->internshipRequirements->id}}">
+                        @if ($data->status == Status::NOT_STARTED)
+                            No Data
+                        @elseif ($data->status == Status::PENDING)
+                            Pending
+                        @elseif ($data->status == Status::APPROVED)
+                            Approved
+                        @elseif ($data->status == Status::DISAPPROVED)
+                            Declined
                         @endif
+                        </label>
                     </td>
                 </tr>
                 @endforeach
                 
             </tbody>
         </table>
-
+        
         <div class="modal fade" id="addFileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -51,13 +61,13 @@
                     </div>
                     <div class="modal-body">
                         <label>Where to put File:</label>
-                        <Select type="file" class="form-control" style="margin-bottom: 20px;" id="type" required>
-                            <option disabled selected> Choose an option<option>
-                            @foreach ($internshipData as $data)
-                                <option value="{{$data->internshipRequirements->id}}">{{$data->internshipRequirements->desc}}</option>
+                        <Select class="form-control" style="margin-bottom: 20px;" id="type" required>
+                            <option disabled selected> Choose an option</option>
+                            @foreach ($internshipRequirements as $requirement)
+                                <option value="{{$requirement->id}}">{{$requirement->desc}}</option>
                             @endforeach
                         <label>File:</label>
-                        <input type="file" class="form-control" id="remarks">
+                        <input type="file" class="form-control" multiple="multiple" id="file">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -70,6 +80,5 @@
     @else
     
     @endif
-    
-    
+    <script type="text/javascript" src="{{ asset('js/custom-js/students/pre-intern.js') }}"> </script>
 @endsection
