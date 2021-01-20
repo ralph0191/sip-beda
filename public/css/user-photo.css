@@ -1,0 +1,25 @@
+.profilepic {
+    border-radius: 50%; 
+    max-width: 40%; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.siplogo {
+    max-width: 40%; 
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.chekuboxu {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    -webkit-appearance: none;
+}

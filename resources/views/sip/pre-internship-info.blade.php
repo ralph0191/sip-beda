@@ -1,64 +1,84 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Auth::user()) 
-        <br/>
-        <h3>Pre-Internship Requirements</h3>
+    @if (Auth::user())
+        <div class="card-header ">
+            <h4 class="card-title">Pre-Internship Requirements</h4>
+            <h5 class="card-category">{{$student->last_name . ' ' . $student->first_name}}</h5>
+            <h5 class="card-category">{{$student->course->name}}</h5>
+        </div> 
+        <div class="content">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card-header">
+                        <div class="card-body">          
+                            <div class="table-full-width table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" width="800">Desc</th>
+                                            <th scope="col">Files</th>
+                                            <th scope="col">Remarks</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($internshipData as $data)
+                                        <tr>
+                                            <td>
+                                                {{$data->internshipRequirements->desc}}
+                                            </td>
+                                            <td>
+                                                @if (count($data->internshipFiles) > 0)
+                                                    @foreach ($data->internshipFiles as $file)
+                                                        <a href="#">{{$file->file_name }}</a>
+                                                    @endforeach
+                                                @endif
+                                                
+                                            </td>
+                                            <td>{{$data->remarks}}</td>
+                                            <td>
+                                                @if ($data->status == 0)
+                                                    No Data
+                                                @elseif ($data->status == 1)
+                                                    Pending
+                                                @elseif ($data->status == 2)
+                                                    Approved
+                                                @elseif ($data->status == 4)
+                                                    Declined
+                                                @endif
+                                            </td>
+                                            
+                                            <td>
+                                                @if ($data->status == 1 || $data->status == 0)
+                                                    <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
+                                                    <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
+                                                @endif
+                                                
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </tbody>
+                                </table>
 
-        <h4>{{$student->last_name . ' ' . $student->first_name}}<h4>
-        <h5>{{$student->course->name}}<h5>
-        <button class="btn btn-success float-right" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
-        <br/>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col" width="800">Desc</th>
-                <th scope="col">Files</th>
-                <th scope="col">Remarks</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach ($internshipData as $data)
-                <tr>
-                    <td>
-                        {{$data->internshipRequirements->desc}}
-                    </td>
-                    <td>
-                        @if (count($data->internshipFiles) > 0)
-                            @foreach ($data->internshipFiles as $file)
-                                <a href="#">{{$file->file_name }}</a>
-                            @endforeach
-                        @endif
-                        
-                    </td>
-                    <td>{{$data->remarks}}</td>
-                    <td>
-                        @if ($data->status == 0)
-                            No Data
-                        @elseif ($data->status == 1)
-                            Pending
-                        @elseif ($data->status == 2)
-                            Approved
-                        @elseif ($data->status == 4)
-                            Declined
-                        @endif
-                    </td>
-                    
-                    <td>
-                        @if ($data->status == 1 || $data->status == 0)
-                            <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
-                            <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
-                        @endif
-                        
-                    </td>
-                </tr>
-                @endforeach
-                
-            </tbody>
-        </table>
-        
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-2" style="padding-top:70px; padding-right:70px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Complete Pre-Internship</h4>
+                        </div>
+                        <div class="card-body">
+                            <button class="btn btn-success" style="margin-right: 50px; margin-bottom:10px;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

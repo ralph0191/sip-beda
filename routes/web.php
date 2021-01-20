@@ -26,6 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/profile/form-profile', function () {
+        return view('profile/form-profile');
+    });
 
     Route::get('/student/pre-internship', function () {
         return view('students/pre-internship');
