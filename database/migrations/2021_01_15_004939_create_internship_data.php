@@ -18,7 +18,7 @@ class CreateInternshipData extends Migration
             $table->bigInteger('student_id')->unsigned();
             $table->bigInteger('internship_requirements_id')->unsigned();
             $table->string('file_url')->defaults('');
-            $table->string('remarks')->defaults('');
+            $table->string('remarks')->nullable()->defaults('');
             $table->tinyInteger('status');
             
             $table->foreign('student_id')->references('id')->on('students');
