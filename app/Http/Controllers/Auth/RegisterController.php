@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'course' => ['required', 'string'],
-            // 'student_number' => ['required']
+            'student_number' => ['required', 'int']
         ]);
     }
 
@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'first_name'        => $data['first_name'],
             'middle_name'       => $data['middle_name'],
             'last_name'         => $data['last_name'],
-            'student_number'    => $data['student_no'],
+            'student_number'    => $data['student_number'],
             'birthday'          => now(),
             'mobile_number'     => $data['mobile_number'],
             'picture'           => '',

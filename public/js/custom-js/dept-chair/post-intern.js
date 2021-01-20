@@ -31,9 +31,8 @@ const attachListenerSaveBtn=()=> {
         info.studentId =  $('#id').val();
         info.dataId  = $('#data-id').val();
         info.remarks  = $('#remarks').val();
-        var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if ()
-        $.when(ajax.create('/dept-chair/during-internship/check-file/', info)).done(function(response) {
+
+        $.when(ajax.create('/dept-chair/end-internship/check-file/', info)).done(function(response) {
             switch(response.status) {
             
                 case HttpStatus.SUCCESS:
@@ -43,7 +42,7 @@ const attachListenerSaveBtn=()=> {
                         alert('Student file have been Declined.');
                     }
                     
-                    redirect('/dept-chair/during-student-view/' + info.studentId ,1000);
+                    redirect('/dept-chair/end-student-view/' + info.studentId ,1000);
                 break;  
             }
         });
@@ -55,12 +54,12 @@ const attachListenerCompleteBtn=()=> {
         e.preventDefault();
         $id = $(this).data('id');
 
-        $.when(ajax.fetch('/dept-chair/complete-during-internship/approved/' +  $id)).done(function(response) {
+        $.when(ajax.fetch('/dept-chair/complete-end-internship/approved/' +  $id)).done(function(response) {
 
             switch(response.status) {
                 case HttpStatus.SUCCESS:
                     alert('Student is now completed.');
-                    redirect('/dept-chair/during-internship' ,1000);
+                    redirect('/dept-chair/end-of-internship' ,1000);
                 break;  
             }
         });

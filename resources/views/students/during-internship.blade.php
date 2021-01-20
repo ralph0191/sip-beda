@@ -65,12 +65,13 @@
                     </div>
                     <div class="modal-body">
                         <label>Where to put File:</label>
-                        <Select class="form-control" style="margin-bottom: 20px;" id="type" required>
+                        <select class="form-control" style="margin-bottom: 20px;" id="type" required>
                             <option disabled selected> Choose an option</option>
                             
                             @foreach ($internshipData as $data)
                                 <option {{$data->status == Status::APPROVED ? 'disabled' : ''}} value="{{$data->internshipRequirements->id}}">{{$data->internshipRequirements->desc}}</option>
                             @endforeach
+                        </select>
                         <label>File:</label>
                         <input type="file" class="form-control" multiple="multiple" id="file">
                     </div>
