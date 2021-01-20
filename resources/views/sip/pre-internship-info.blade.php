@@ -28,7 +28,7 @@
                     <td>
                         @if (count($data->internshipFiles) > 0)
                             @foreach ($data->internshipFiles as $file)
-                                <a href="#">{{$file->file_name }}</a>
+                                <a href="{{'/sip/pre-internship/download-file/' . $file->id}}">{{$file->file_name }}</a>
                             @endforeach
                         @endif
                         

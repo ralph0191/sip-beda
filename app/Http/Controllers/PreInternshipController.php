@@ -39,8 +39,14 @@ class PreInternshipController extends Controller
                 ['student_id', '=', $student->id],
                 ['internship_requirements_id', '=', $requirementId]
             ])->first();
-            
+            error_log(count($internshipData->internshipFiles));
 
+            if (count($internshipData->internshipFiles) > 0) {
+                foreach ($internshipData->internshipFiles as $file) {
+                    Storage::delete($file->file_url);
+                    $file->delete();
+                }
+            }
 
             foreach($request->file('file') as $file) {
                 $fileName = time() . '_' . $file->getClientOriginalName();
@@ -66,10 +72,11 @@ class PreInternshipController extends Controller
         return response()->download(public_path() . '/files/'. $fileName . '.docx');
     }
 
-    public function sipDownloadFile()
+    public function sipDownloadFile($id)
     {
-        
-        return Storage::download('public/user_file/3/1611039569_SIP-Agreement (1).docx');
+        $internshipFile = InternshipFiles::find($id);
+
+        return Storage::download($internshipFile->file_url);
     }
 
     public function sipTableView()
