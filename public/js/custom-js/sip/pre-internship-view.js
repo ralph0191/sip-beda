@@ -51,10 +51,11 @@ const attachListenerSaveBtn=()=> {
         info.remarks  = $('#remarks').val();
 
         $.when(ajax.create('/sip/pre-internship/approve-file/', info)).done(function(response) {
+            console.log(info.status);
             switch(response.status) {
-           
+            
                 case HttpStatus.SUCCESS:
-                    if (status == 2) {
+                    if (info.status == 2) {
                         alert('Student file have been accepted.');
                     } else {
                         alert('Student file have been Declined.');
@@ -65,6 +66,5 @@ const attachListenerSaveBtn=()=> {
             }
         });
     });
-    
 }
 
