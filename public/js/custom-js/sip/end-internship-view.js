@@ -9,12 +9,12 @@ const attachListenerCompleteBtn=()=> {
     $(document).on("click", "#complete-btn",function(e) {
         e.preventDefault();
         $id = $(this).data('id');
-        $.when(ajax.fetch('/sip/complete-pre-internship/approved/' +  $id)).done(function(response) {
+        $.when(ajax.fetch('/sip/complete-end-internship/approved/' +  $id)).done(function(response) {
             switch(response.status) {
            
                 case HttpStatus.SUCCESS:
                     alert('Student is now completed.');
-                    redirect('/sip/pre-internship-table' ,1000);
+                    redirect('/sip/end-internship-table' ,1000);
                 break;  
             }
         });
@@ -48,7 +48,7 @@ const attachListenerSaveBtn=()=> {
         info.dataId  = $('#data-id').val();
         info.remarks  = $('#remarks').val();
 
-        $.when(ajax.create('/sip/pre-internship/approve-file/', info)).done(function(response) {
+        $.when(ajax.create('/sip/end-internship/approve-file/', info)).done(function(response) {
             console.log(info.status);
             switch(response.status) {
             
@@ -59,7 +59,7 @@ const attachListenerSaveBtn=()=> {
                         alert('Student file have been Declined.');
                     }
                     
-                    redirect('/sip/pre-student-view/' + info.studentId ,1000);
+                    redirect('/sip/end-student-view/' + info.studentId ,1000);
                 break;  
             }
         });

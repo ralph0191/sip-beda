@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/student/pre-internship', 'App\Http\Controllers\PreInternshipController@studentView');
     Route::post('/student/pre-internship/attached-file',  'App\Http\Controllers\PreInternshipController@studentUploadFile');
     Route::get('/student/pre-internship/download-file/{fileName}', 'App\Http\Controllers\PreInternshipController@studentDownloadFile');
+    Route::get('/student/during-internship', 'App\Http\Controllers\DuringInternshipController@studentView');
+    Route::post('/student/during-internship/attached-file',  'App\Http\Controllers\DuringInternshipController@studentUploadFile');
 
 
     Route::get('/sip/complete-pre-internship/approved/{id}', 'App\Http\Controllers\PreInternshipController@sipCompleteStudent');
@@ -53,12 +55,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sip/pre-internship-table', 'App\Http\Controllers\PreInternshipController@sipTableView');
     Route::get('/sip/pre-student-view/{id}', 'App\Http\Controllers\PreInternshipController@sipViewStudent');
     Route::get('/sip/pre-internship/download-file/{id}', 'App\Http\Controllers\PreInternshipController@sipDownloadFile');
+    Route::get('/sip/during-internship', 'App\Http\Controllers\DuringInternshipController@sipTableView');
+    Route::get('/sip/during-student-view/{id}', 'App\Http\Controllers\DuringInternshipController@sipViewStudent');
+    Route::get('/sip/complete-during-internship/approved/{id}', 'App\Http\Controllers\DuringInternshipController@sipCompleteStudent');
+    Route::get('/sip/end-internship-table', 'App\Http\Controllers\EndOfInternshipController@sipTableView');
+    Route::get('/sip/end-student-view/{id}', 'App\Http\Controllers\EndOfInternshipController@sipViewStudent');
+    Route::get('/sip/complete-end-internship/approved/{id}', 'App\Http\Controllers\EndOfInternshipController@sipCompleteStudent');
 
     Route::get('/dept-chair/intent-form', 'App\Http\Controllers\IntentFormController@deptChairView');
-    Route::get('/dept-chair/during-internship', 'App\Http\Controllers\IntentFormController@deptChairView');
-    Route::get('/dept-chair/end-of-internship', 'App\Http\Controllers\IntentFormController@deptChairView');
-
+    Route::get('/dept-chair/during-internship', 'App\Http\Controllers\DuringInternshipController@deptChairTable');
+    Route::get('/dept-chair/during-student-view/{id}', 'App\Http\Controllers\DuringInternshipController@deptChairTableView');
+    Route::post('/dept-chair/during-internship/check-file/', 'App\Http\Controllers\DuringInternshipController@deptChairCheckFile');
     Route::get('/dept-chair/intent-form/approved/{id}' , 'App\Http\Controllers\IntentFormController@deptChairApproved');
+    Route::get('/dept-chair/complete-during-internship/approved/{id}', 'App\Http\Controllers\DuringInternshipController@deptChairCompleteStudent');
+    
 });
 
 

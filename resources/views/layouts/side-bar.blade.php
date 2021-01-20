@@ -11,10 +11,7 @@
       <ul class="nav">
         @if (Auth::user()->role_id == Status::STUDENT)
           <li class="active ">
-            <a href="/home">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">Dashboard</p>
-            </a>  
+            <a href="/home"><i class="now-ui-icons files_box"></i><p style="font-size:14px;">Dashboard</p></a>  
           </li>
           @if (Auth::user()->student->studentProgress->read_form == Status::NOT_STARTED)
             <li class="active ">
@@ -39,7 +36,7 @@
             </li>
           @elseif (Auth::user()->student->studentProgress->end_internship_progress == Status::PENDING)
             <li class="active ">
-              <a href="/student/during-internship">
+              <a href="/student/end-internship">
                 <i class="now-ui-icons files_box"></i>
                 <p style="font-size:14px;">End of Internship</p>
               </a>
@@ -59,13 +56,13 @@
             </a>
           </li>
           <li class="active ">
-            <a href="#">
+            <a href="/sip/during-internship">
               <i class="now-ui-icons files_box"></i>
               <p style="font-size:14px;">During Internship</p>
             </a>
           </li>
           <li class="active ">
-            <a href="#">
+            <a href="/sip/end-internship-table">
               <i class="now-ui-icons files_box"></i>
               <p style="font-size:14px;">Post Internship</p>
             </a>
@@ -78,17 +75,26 @@
             </a>
           </li>
           <li class="active ">
-            <a href="#">
+            <a href="/dept-chair/during-internship">
               <i class="now-ui-icons files_box"></i>
               <p style="font-size:14px;">During Internship</p>
             </a>
           </li>
-          <li class="active ">
+          {{-- <li class="active ">
             <a href="#">
               <i class="now-ui-icons files_box"></i>
               <p style="font-size:14px;">End of Internship</p>
             </a>
-          </li>
+          </li> --}}
+          {{-- <a href="/home" class="list-group-item list-group-item-action">Dashboard</a>
+          <a href="/sip/pre-internship-table" class="list-group-item list-group-item-action ">Pre-Internship</a>
+          <a href="/sip/during-internship" class="list-group-item list-group-item-action ">During-Internship</a>
+          <a href="/sip/end-internship-table" class="list-group-item list-group-item-action ">Post-Internship</a> --}}
+          {{-- <a href="#" class="list-group-item list-group-item-action ">Dept-Chairs</a> --}}
+        {{-- @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
+          <a href="/dept-chair/intent-form" class="list-group-item list-group-item-action ">Intent-Forms</a>
+          <a href="/dept-chair/during-internship" class="list-group-item list-group-item-action ">During Internship</a>
+          <a href="#" class="list-group-item list-group-item-action ">End of Internship</a> --}}
         @endif
     </ul>
   </div>

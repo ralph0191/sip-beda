@@ -26,6 +26,8 @@ Class SipStatus {
     const PRE_COR = 9;
     const PRE_ATTENDANCE = 10;
 
+    const DURING_WEEKLY = 14;
+
     const PRE_INTERNSHIP = 0;
     const DURING_INTERNSHIP = 1;
     const END_INTERNSHIP = 2;

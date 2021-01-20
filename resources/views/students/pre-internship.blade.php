@@ -82,8 +82,6 @@
             </div>
         </div>
 
-        
-
         <div class="modal fade" id="addFileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -97,8 +95,9 @@
                         <label>Where to put File:</label>
                         <Select class="form-control" style="margin-bottom: 20px;" id="type" required>
                             <option disabled selected> Choose an option</option>
-                            @foreach ($internshipRequirements as $requirement)
-                                <option value="{{$requirement->id}}">{{$requirement->desc}}</option>
+                            
+                            @foreach ($internshipData as $data)
+                                <option {{$data->status == Status::APPROVED ? 'disabled' : ''}} value="{{$data->internshipRequirements->id}}">{{$data->internshipRequirements->desc}}</option>
                             @endforeach
                         <label>File:</label>
                         <input type="file" class="form-control" multiple="multiple" id="file">
