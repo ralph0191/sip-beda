@@ -54,6 +54,6 @@ class User extends Authenticatable
     }
 
     public function deptChair() {
-        return $this->hasOne(DeptChair::class, 'id');
+        return $this->hasOne(DeptChair::class);
     }
 }

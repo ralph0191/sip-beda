@@ -23,9 +23,7 @@ class PreInternshipController extends Controller
         })->with(['internshipRequirements' => function($query) { 
             $query->where('internship_type', SipStatus::PRE_INTERNSHIP);
         }])->get();
-
-        $internshipRequirements = InternshipRequirements::where('internship_type', SipStatus::PRE_INTERNSHIP)->get();
-        return view('students.pre-internship', compact('internshipData', 'internshipRequirements'));
+        return view('students.pre-internship', compact('internshipData'));
     }
 
     public function studentUploadFile(Request $request)
@@ -39,7 +37,6 @@ class PreInternshipController extends Controller
                 ['student_id', '=', $student->id],
                 ['internship_requirements_id', '=', $requirementId]
             ])->first();
-            error_log(count($internshipData->internshipFiles));
 
             if (count($internshipData->internshipFiles) > 0) {
                 foreach ($internshipData->internshipFiles as $file) {
@@ -114,7 +111,7 @@ class PreInternshipController extends Controller
             $q->where('pre_internship_progress', SipStatus::PENDING);
         })->get();
 
-        return view('sip.pre-internship-table', compact('students'));
+        return response()->json(['status' => Response::HTTP_OK]);
     }
 
     public function sipApprovedFile(Request $request)
