@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="padding-top:70px; position:absolute; margin: auto;  top: 0; left: 0; bottom: 0; right: 0;">
+<div class="container" style="position:absolute; margin: auto;  top: 40%; left: 50%; bottom: 0; right: 0; transform: translate(-50%, -50%);">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

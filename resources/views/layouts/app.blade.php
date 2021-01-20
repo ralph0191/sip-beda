@@ -23,6 +23,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Font Awesome 5.8.2 -->
     <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.8.2-web/css/all.min.css') }}">
@@ -30,6 +32,8 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="{{ asset('css/simple-sidebar.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/user-photo.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/side-bar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <style>
@@ -75,8 +79,17 @@
 
                 <div id="page-content-wrapper">
                     @include('layouts.nav-bar')
-
-                    @yield('content')
+                    <div class="main-panel" >
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card"> 
+                                        @yield('content')
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>  
             </div>
         @else 
