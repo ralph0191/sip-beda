@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/sip/pre-internship/approve-file/', 'App\Http\Controllers\PreInternshipController@sipApprovedFile');
     Route::get('/sip/pre-internship-table', 'App\Http\Controllers\PreInternshipController@sipTableView');
     Route::get('/sip/pre-student-view/{id}', 'App\Http\Controllers\PreInternshipController@sipViewStudent');
-    Route::get('/sip/pre-internship/download-file', 'App\Http\Controllers\PreInternshipController@sipDownloadFile');
+    Route::get('/sip/pre-internship/download-file/{id}', 'App\Http\Controllers\PreInternshipController@sipDownloadFile');
 
     Route::get('/dept-chair/intent-form', 'App\Http\Controllers\IntentFormController@deptChairView');
     Route::get('/dept-chair/during-internship', 'App\Http\Controllers\IntentFormController@deptChairView');

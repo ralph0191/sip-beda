@@ -18,8 +18,9 @@
     <script type="text/javascript" src="{{ asset('js/util.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/library/alertify.min.js') }} "></script>
     <script type="text/javascript" src="{{ asset('js/library/pagination.min.js') }} "></script>
-    
-    <!-- Fonts and icons -->
+    <script type="text/javascript" src="{{ asset('js/library/jquery.blockUI.js') }}"></script>
+
+    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />

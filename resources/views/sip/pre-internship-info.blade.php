@@ -25,47 +25,46 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($internshipData as $data)
-                                        <tr>
-                                            <td>
-                                                {{$data->internshipRequirements->desc}}
-                                            </td>
-                                            <td>
-                                                @if (count($data->internshipFiles) > 0)
-                                                    @foreach ($data->internshipFiles as $file)
-                                                        <a href="#">{{$file->file_name }}</a>
-                                                    @endforeach
-                                                @endif
+                                            <tr>
+                                                <td>
+                                                    {{$data->internshipRequirements->desc}}
+                                                </td>
+                                                <td>
+                                                    @if (count($data->internshipFiles) > 0)
+                                                        @foreach ($data->internshipFiles as $file)
+                                                            <a href="{{'/sip/pre-internship/download-file/' . $file->id}}">{{$file->file_name }}</a>
+                                                        @endforeach
+                                                    @endif
+                                                    
+                                                </td>
+                                                <td>{{$data->remarks}}</td>
+                                                <td>
+                                                    @if ($data->status == 0)
+                                                        No Data
+                                                    @elseif ($data->status == 1)
+                                                        Pending
+                                                    @elseif ($data->status == 2)
+                                                        Approved
+                                                    @elseif ($data->status == 4)
+                                                        Declined
+                                                    @endif
+                                                </td>
                                                 
-                                            </td>
-                                            <td>{{$data->remarks}}</td>
-                                            <td>
-                                                @if ($data->status == 0)
-                                                    No Data
-                                                @elseif ($data->status == 1)
-                                                    Pending
-                                                @elseif ($data->status == 2)
-                                                    Approved
-                                                @elseif ($data->status == 4)
-                                                    Declined
-                                                @endif
-                                            </td>
-                                            
-                                            <td>
-                                                @if ($data->status == 1 || $data->status == 0)
-                                                    <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
-                                                    <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
-                                                @endif
-                                                
-                                            </td>
-                                        </tr>
+                                                <td>
+                                                    @if ($data->status == 1 || $data->status == 0)
+                                                        <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
+                                                        <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
+                                                    @endif
+                                                    
+                                                </td>
+                                            </tr>
                                         @endforeach
                                         
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-md-2" style="padding-top:70px; padding-right:70px;">
                     <div class="card">
@@ -73,7 +72,7 @@
                             <h4 class="card-title">Complete Pre-Internship</h4>
                         </div>
                         <div class="card-body">
-                            <button class="btn btn-success" style="margin-right: 50px; margin-bottom:10px;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
+                        <button class="btn btn-success" style="margin-right: 50px; margin-bottom:10px;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
                         </div>
                     </div>
                 </div>
