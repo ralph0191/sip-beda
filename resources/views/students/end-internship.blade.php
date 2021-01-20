@@ -3,7 +3,7 @@
 @section('content')
     @if (Auth::user()) 
         <div class="card-header ">
-            <h4 class="card-title">Pre-Internship Requirements</h4>
+            <h4 class="card-title">End of Internship Requirements</h4>
         </div> 
         
         <div class="content">
@@ -67,9 +67,9 @@
                             <h4 class="card-title">Downloadable Files</h4>
                         </div>
                         <div class="card-body">
-                            <a href="pre-internship/download-file/SIP-Endorsement">Endorsement Form</a>
+                            <a href="pre-internship/download-file/supervisors-evaluation">Supervisor's Evaluation of Student Internship Performance</a>
                              <br/>
-                            <a href="pre-internship/download-file/SIP-Agreement">Internship Agreement Form</a>
+                            <a href="pre-internship/download-file/completion-report-reflection">Internship Completion Report and Reflection</a>
                         </div>
                         <div class="card-header">
                             <h4 class="card-title">File Submission</h4>

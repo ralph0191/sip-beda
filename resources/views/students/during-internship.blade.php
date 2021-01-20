@@ -6,9 +6,13 @@
         <h2>During Internship Requirements</h2>
 
         <h4>Downloadable Files</h4>
-        <a href="pre-internship/download-file/SIP-Endorsement">Endorsement Form</a>
+        <a href="pre-internship/download-file/certificate-of-acceptance">Certificate of Acceptance Form</a>
         <br/>
-        <a href="pre-internship/download-file/SIP-Agreement">Internship Agreement Form</a>
+        <a href="pre-internship/download-file/official-schedule">Official Schedule Form</a>
+        <br/>
+        <a href="pre-internship/download-file/weekly-internship">Weekly Internship Report</a>
+        <br/>
+        
 
         <button class="btn btn-primary float-right" style="margin-right: 50px; margin-bottom:10px;"data-toggle="modal" data-target="#addFileModal">Add Attachment</button>
         <table class="table table-bordered">

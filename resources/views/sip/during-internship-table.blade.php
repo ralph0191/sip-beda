@@ -6,7 +6,7 @@
 
          {{-- <h5>{{Auth::user()->deptChair->course->name}}</h5> --}}
     </div>    
-
+    <input type="text" id="search" placeholder="search">
     <table class="table">
         <thead>
         <tr>
