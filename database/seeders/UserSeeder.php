@@ -17,14 +17,19 @@ class UserSeeder extends Seeder
     {
         User::insert([
             [
-                'name' => 'sip',
                 'email' => 'sip@email.com',
+                'first_name' => 'sip',
+                'last_name' => 'sip',
+                'email'     => 'sip@email.com',
+                'birthday'  =>  '1991-12-31',
                 'password' => Hash::make('password'),
                 'role_id' => 1
             ],
             [
-                'name' => 'deptchair',
                 'email' => 'deptchair@email.com',
+                'first_name' => 'dept',
+                'last_name' => 'chair',
+                'birthday'  =>  '1991-12-31',
                 'password' => Hash::make('password'),
                 'role_id' => 2
             ],

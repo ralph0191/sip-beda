@@ -14,9 +14,7 @@ const attachModalUploadListener = () => {
             for (i = 0; i < fileLength; i++) {
                 formData.append('file[]', $('#file')[0].files[i]);
             }
-            console.log($('#type').val());
             file_tree_content.internshipRequirementsId = $('#type').val();
-            console.log(file_tree_content.internshipRequirementsId);
             formData.append('fileTreeObj' , JSON.stringify(file_tree_content));
             
             $.when(ajax.createWithFile('/student/pre-internship/attached-file', formData)).done(function(response) {

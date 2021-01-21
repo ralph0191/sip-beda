@@ -4,7 +4,7 @@
     @if (Auth::user())
         <div class="card-header ">
             <h4 class="card-title">Pre-Internship Requirements</h4>
-            <h5 class="card-category">{{$student->last_name . ' ' . $student->first_name}}</h5>
+            <h5 class="card-category">{{$student->user->last_name . ' ' . $student->user->first_name}}</h5>
             <h5 class="card-category">{{$student->course->name}}</h5>
         </div> 
         <div class="content">

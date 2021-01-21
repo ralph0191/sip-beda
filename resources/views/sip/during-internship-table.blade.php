@@ -37,7 +37,7 @@
                                         @foreach ($students as $student)
                                             <tr>
                                                 <td scope="col">{{$student->student_number}}</td>
-                                                <td scope="col">{{$student->last_name . ' ' . $student->first_name}}</td>
+                                                <td scope="col">{{$student->user->last_name . ' ' . $student->user->first_name}}</td>
                                                 <td>{{$student->course->name}}</td>
                                                 <td scope="col"><button onclick="location.href='/sip/during-student-view/{{$student->id}}'" class="btn btn-primary">View Student</button></td>
                                             </tr>

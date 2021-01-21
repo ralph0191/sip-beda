@@ -33,7 +33,7 @@
         <label for="first_name" class="col-md-2 col-form-label text-md-right">{{ __('First Name') }}</label>
 
         <div class="col-md-4">
-            <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ Auth::user()->student->first_name }}" disabled autocomplete="first_name" autofocus>
+            <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ Auth::user()->first_name }}" disabled autocomplete="first_name" autofocus>
 
             @error('first_name')
                 <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
         <label for="middle_name" class="col-md-2 col-form-label text-md-right">{{ __('Middle Name') }}</label>
 
         <div class="col-md-4">
-            <input id="middle_name" type="text" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ Auth::user()->student->middle_name }}" disabled autocomplete="middle_name" autofocus>
+            <input id="middle_name" type="text" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ Auth::user()->middle_name }}" disabled autocomplete="middle_name" autofocus>
 
             @error('middle_name')
                 <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
         <label for="last_name" class="col-md-2 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
         <div class="col-md-4">
-            <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ Auth::user()->student->last_name }}" disabled autocomplete="last_name" autofocus>
+            <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ Auth::user()->last_name }}" disabled autocomplete="last_name" autofocus>
 
             @error('last_name')
                 <span class="invalid-feedback" role="alert">

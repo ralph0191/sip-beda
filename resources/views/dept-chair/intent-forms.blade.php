@@ -23,7 +23,7 @@
                                     @foreach ($studentWithIntentForm as $student)
                                         <tr>
                                             <th scope="col">{{$student->student_number}}</th>
-                                            <th scope="col">{{$student->last_name . ' ' . $student->first_name}}</th>
+                                            <th scope="col">{{$student->user->last_name . ' ' . $student->user->first_name}}</th>
                                             <th scope="col">
                                                 <button class="btn btn-primary" id="accept-btn" data-id="{{$student->id}}">Accept Intent Form</button>
                                             </th>

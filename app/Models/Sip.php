@@ -12,8 +12,7 @@ class Sip extends Model
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'user_id','first_name','middle_name','last_name','email','birthday',
-        'student_num','address','mobile_number','picture', 'course_id'
+        'user_id','employee_number', 'course_id'
     ];
 
     protected $table = 'sip';
