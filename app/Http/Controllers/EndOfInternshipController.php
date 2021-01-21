@@ -19,7 +19,7 @@ class EndOfInternshipController extends Controller
     public function sipTableView()
     {
         $students = Student::whereHas('studentProgress', function ($q) {
-            $q->where('end_internship_progress', SipStatus::PENDING);
+            $q->where('end_internship_progress', SipStatus::APPROVED);
         })->get();
 
         return view('sip.end-internship-table', compact('students'));
