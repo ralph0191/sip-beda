@@ -59,7 +59,7 @@ const attachListenerCompleteBtn=()=> {
             switch(response.status) {
                 case HttpStatus.SUCCESS:
                     alert('Student is now completed.');
-                    redirect('/dept-chair/end-of-internship' ,1000);
+                    redirect('/dept-chair/end-internship' ,1000);
                 break;  
             }
         });

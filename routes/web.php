@@ -71,7 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dept-chair/end-internship', 'App\Http\Controllers\EndOfInternshipController@deptChairTable');
     Route::get('/dept-chair/end-student-view/{id}', 'App\Http\Controllers\EndOfInternshipController@deptChairViewStudent');
     Route::post('/dept-chair/end-internship/check-file/', 'App\Http\Controllers\EndOfInternshipController@deptChairCheckFile');
-    Route::get('/dept-chair/complete-end-internship/approved/{id}', 'App\Http\Controllers\EndOfInternshipController@studentView@deptChairCompleteStudent');
+    Route::get('/dept-chair/complete-end-internship/approved/{id}', 'App\Http\Controllers\EndOfInternshipController@deptChairCompleteStudent');
     
 });
 
