@@ -30,7 +30,7 @@ const attachListenerSaveBtn=()=> {
         info.status =  $('#status').val();
         info.studentId =  $('#id').val();
         info.dataId  = $('#data-id').val();
-        info.remarks  = $('#remarks').val();
+        info.remarks  = escape($('#remarks').val());
 
         $.when(ajax.create('/dept-chair/end-internship/check-file/', info)).done(function(response) {
             switch(response.status) {

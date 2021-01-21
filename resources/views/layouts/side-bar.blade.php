@@ -85,6 +85,13 @@
               <p style="font-size:14px;">Post Internship</p>
             </a>
           </li>
+          
+          <li class="active ">
+            <a href="/dept-chair/">
+              <i class="now-ui-icons files_box"></i>
+              <p style="font-size:14px;">Dept Chairs</p>
+            </a>
+          </li>
         @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
           <li class="active ">
             <a href="/dept-chair/intent-form">
