@@ -49,7 +49,6 @@ const attachListenerSaveBtn=()=> {
         info.remarks  = escape($('#remarks').val());
 
         $.when(ajax.create('/sip/end-internship/approve-file/', info)).done(function(response) {
-            console.log(info.status);
             switch(response.status) {
             
                 case HttpStatus.SUCCESS:
