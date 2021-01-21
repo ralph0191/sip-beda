@@ -16,10 +16,6 @@ class DeptChairSeeder extends Seeder
     {
         DeptChair::insert([
             'user_id' => 2,
-            'first_name' => 'dep',
-            'last_name' => 'chair',
-            'email'     => 'depchair@email.com',
-            'birthday'  =>  '1991-12-31',
             'employee_number' => '00000001',
             'course_id'        => 9
         ]);

@@ -69,23 +69,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name'              => $data['last_name'],
+            'email'             => $data['email'],
+            'first_name'        => ucwords(strtolower($data['first_name'])),
+            'middle_name'       => ucwords(strtolower($data['middle_name'])),
+            'last_name'         => ucwords(strtolower($data['last_name'])),
+            'password'          => Hash::make($data['password']),
+            'birthday'          => now(),
+            'mobile_number'     => $data['mobile_number'],
+            'picture'           => '',
             'role_id' => 0
         ]);
 
         $user->student()->create([
             'user_id'           => $user->id,
-            'email'             => $user->email,
-            'first_name'        => ucwords(strtolower($data['first_name'])),
-            'middle_name'       => ucwords(strtolower($data['middle_name'])),
-            'last_name'         => ucwords(strtolower($data['last_name'])),
             'student_number'    => $data['student_number'],
-            'birthday'          => now(),
-            'mobile_number'     => $data['mobile_number'],
-            'picture'           => '',
-            'course_id'         => $data['course']
+            'course_id'         => $data['course'],
+            'ojt_status'        => 0
         ]);
 
         $user->student->studentProgress()->create([

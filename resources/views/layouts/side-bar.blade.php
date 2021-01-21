@@ -16,7 +16,7 @@
         @endif 
         <br/>
         @if (Auth::user()->role_id == Status::STUDENT) 
-          {{Auth::user()->student->last_name . ',' . Auth::user()->student->first_name}}
+          {{Auth::user()->last_name . ',' . Auth::user()->first_name}}
         @elseif (Auth::user()->role_id == Status::SIP)
           {{ Auth::user()->sip->employee_number}}
         @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
@@ -87,7 +87,7 @@
           </li>
           
           <li class="active ">
-            <a href="/dept-chair/">
+            <a href="/sip/dept-chairs">
               <i class="now-ui-icons files_box"></i>
               <p style="font-size:14px;">Dept Chairs</p>
             </a>

@@ -40,7 +40,7 @@
                                         @foreach ($students as $student)
                                         <tr>
                                             <td>{{$student->student_number}}</td>
-                                            <td>{{$student->last_name . ' ' . $student->first_name}}</td>
+                                            <td>{{$student->user->last_name . ' ' . $student->user->first_name}}</td>
                                             <td>{{$student->course->name}}</td>
                                             <td ><button onclick="location.href='/sip/pre-student-view/{{$student->id}}'" class="btn btn-primary">View Student</button></td>
                                         </tr>

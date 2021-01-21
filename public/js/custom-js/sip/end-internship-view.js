@@ -46,7 +46,7 @@ const attachListenerSaveBtn=()=> {
         info.status =  $('#status').val();
         info.studentId =  $('#id').val();
         info.dataId  = $('#data-id').val();
-        info.remarks  = escape($('#remarks').val());
+        info.remarks  = $('#remarks').val();
 
         $.when(ajax.create('/sip/end-internship/approve-file/', info)).done(function(response) {
             switch(response.status) {

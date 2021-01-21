@@ -8,7 +8,7 @@
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <p style="color: black; font-size: 16px;">{{ Auth::user()->name}}</p>
+            <p style="color: black; font-size: 16px;">{{ Auth::user()->last_name}}</p>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/profile/form-profile">Profile</a>
