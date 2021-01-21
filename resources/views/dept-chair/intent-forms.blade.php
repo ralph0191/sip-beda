@@ -25,7 +25,7 @@
                                             <th scope="col">{{$student->student_number}}</th>
                                             <th scope="col">{{$student->last_name . ' ' . $student->first_name}}</th>
                                             <th scope="col">
-                                                <button id="accept-btn" data-id="{{$student->id}}">Accept Intent Form</button>
+                                                <button class="btn btn-primary" id="accept-btn" data-id="{{$student->id}}">Accept Intent Form</button>
                                             </th>
                                         </tr>
                                     @endforeach

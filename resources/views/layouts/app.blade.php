@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="{{ asset('css/simple-sidebar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/user-photo.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/drop-down.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/side-bar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

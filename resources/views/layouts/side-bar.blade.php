@@ -5,7 +5,25 @@
   </div>
   <div class="logo">
     <img src="{{asset('images/me.jpg')}}" alt="SIP SBCA" class="simple-text logo-normal profilepic">
-    <center> <h5 style="color:white; font-family:AgencyFB; font-style:Wide Black; font-size:18px;"> 2015301118 <br/> San Gabriel, Christ Caezar </h5> </center>
+    <center> 
+      <h5 style="color:white; font-family:AgencyFB; font-style:Wide Black; font-size:18px;">
+        @if (Auth::user()->role_id == Status::STUDENT) 
+          {{ Auth::user()->student->student_number}} 
+        @elseif (Auth::user()->role_id == Status::SIP)
+          {{ Auth::user()->sip->employee_number}}
+        @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
+          {{ Auth::user()->deptChair->employee_number}}
+        @endif 
+        <br/>
+        @if (Auth::user()->role_id == Status::STUDENT) 
+          {{Auth::user()->student->last_name . ',' . Auth::user()->student->first_name}}
+        @elseif (Auth::user()->role_id == Status::SIP)
+          {{ Auth::user()->sip->employee_number}}
+        @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
+          {{ Auth::user()->deptChair->employee_number}}
+        @endif 
+      </h5> 
+    </center>
     </div>
     <div class="sidebar-wrapper" id="sidebar-wrapper">
       <ul class="nav">
