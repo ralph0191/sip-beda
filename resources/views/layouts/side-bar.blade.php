@@ -98,12 +98,12 @@
               <p style="font-size:14px;">During Internship</p>
             </a>
           </li>
-          {{-- <li class="active ">
-            <a href="#">
+          <li class="active ">
+            <a href="/dept-chair/end-internship">
               <i class="now-ui-icons files_box"></i>
               <p style="font-size:14px;">End of Internship</p>
             </a>
-          </li> --}}
+          </li>
           {{-- <a href="/home" class="list-group-item list-group-item-action">Dashboard</a>
           <a href="/sip/pre-internship-table" class="list-group-item list-group-item-action ">Pre-Internship</a>
           <a href="/sip/during-internship" class="list-group-item list-group-item-action ">During-Internship</a>

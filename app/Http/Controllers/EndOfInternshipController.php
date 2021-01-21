@@ -25,13 +25,27 @@ class EndOfInternshipController extends Controller
         return view('sip.end-internship-table', compact('students'));
     }
 
-    public function deptChairTableView()
+    public function deptChairTable()
     {
         $students = Student::whereHas('studentProgress', function ($q) {
-            $q->where('pre_internship_progress', SipStatus::PENDING);
+            $q->where('end_internship_progress', SipStatus::PENDING);
         })->get();
 
-        return view('sip.pre-internship-table', compact('students'));
+        return view('dept-chair.end-of-internship', compact('students'));
+    }
+
+    public function deptChairViewStudent($id)
+    {
+        $student = Student::find($id);
+        $internshipData = InternshipData::where('student_id', $id)
+        ->whereHas('internshipRequirements', function ($query) {
+            $query->where('internship_type', SipStatus::END_INTERNSHIP);
+        })
+        ->with(['internshipRequirements' => function($query) { 
+            $query->where('internship_type', SipStatus::END_INTERNSHIP);
+        }])->get();
+
+        return view('dept-chair.end-of-internship-info', compact('internshipData', 'student'));
     }
 
     public function sipViewStudent($id)
@@ -47,11 +61,20 @@ class EndOfInternshipController extends Controller
 
         return view('sip.end-internship-info', compact('internshipData', 'student'));
     }
+    
+    public function deptChairCompleteStudent($id)
+    {
+        $studentProgress = StudentProgress::where('student_id', $id)->first();
+        $studentProgress->end_internship_progress = SipStatus::APPROVED;
+        $studentProgress->update();
+
+        return response()->json(['status' => Response::HTTP_OK]);
+    }
 
     public function sipCompleteStudent($id)
     {
         $studentProgress = StudentProgress::where('student_id', $id)->first();
-        $studentProgress->end_internship_progress = SipStatus::APPROVED;
+        $studentProgress->end_internship_progress = SipStatus::APPROVED_BOTH;
         $studentProgress->update();
 
         return response()->json(['status' => Response::HTTP_OK]);
@@ -107,6 +130,16 @@ class EndOfInternshipController extends Controller
                 $internshipData->update();
             }
         }
+
+        return response()->json(['status' => Response::HTTP_OK]);
+    }
+
+    public function deptChairCheckFile(Request $request)
+    {
+        $internData = InternshipData::where('id', $request->dataId)->first();
+        $internData->status = $request->status;
+        $internData->remarks = $request->remarks;
+        $internData->update();
 
         return response()->json(['status' => Response::HTTP_OK]);
     }

@@ -68,6 +68,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/dept-chair/during-internship/check-file/', 'App\Http\Controllers\DuringInternshipController@deptChairCheckFile');
     Route::get('/dept-chair/intent-form/approved/{id}' , 'App\Http\Controllers\IntentFormController@deptChairApproved');
     Route::get('/dept-chair/complete-during-internship/approved/{id}', 'App\Http\Controllers\DuringInternshipController@deptChairCompleteStudent');
+    Route::get('/dept-chair/end-internship', 'App\Http\Controllers\EndOfInternshipController@deptChairTable');
+    Route::get('/dept-chair/end-student-view/{id}', 'App\Http\Controllers\EndOfInternshipController@deptChairViewStudent');
+    Route::post('/dept-chair/end-internship/check-file/', 'App\Http\Controllers\EndOfInternshipController@deptChairCheckFile');
+    Route::get('/dept-chair/complete-end-internship/approved/{id}', 'App\Http\Controllers\EndOfInternshipController@studentView@deptChairCompleteStudent');
     
 });
 
