@@ -6,12 +6,28 @@
             <h4 class="card-title">Pre-Interns</h4>
         </div>
         <div class="content">
+        <div class="content">
+        <div style="float: right; margin-right: 300px;">
+            <div class="dropdown">
+                <h4 class="card-category"> Course Filter by: </h4>
+                <select class="form-control" id="course" required>
+                    <option disabled selected> Choose an option</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <h4 class="card-category"> Enter a Student Name: </h4>
+                <input type="text" id="search" placeholder="search">
+            </div>
+        </div>   
+    </div>   
+    </div>
+        <div class="content">
             <div class="row">
                 <div class="col-md-10">
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
-                                <table class="table table-bordered" >
+                                <table class="table" >
                                     <thead>
                                     <tr>
                                         <th scope="col">Student Number</th>

@@ -69,7 +69,7 @@
                 <div class="col-md-2" style="padding-top:70px; padding-right:70px;">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Complete Pre-Internship</h4>
+                            <h4 class="card-category">Complete Pre-Internship</h4>
                         </div>
                         <div class="card-body">
                         <button class="btn btn-success" style="margin-right: 50px; margin-bottom:10px;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
