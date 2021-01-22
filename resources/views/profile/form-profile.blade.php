@@ -88,7 +88,7 @@
                         <div class="author">
                             <a href="#">
                             <img class="avatar border-gray" src="{{asset('images/me.jpg')}}" alt="...">
-                            <h5 class="title">{{ Auth::user()->name}}</h5>
+                            <h5 class="title">{{ Auth::user()->last_name}}</h5>
                             </a>
                             <p class="description">
                             michael24

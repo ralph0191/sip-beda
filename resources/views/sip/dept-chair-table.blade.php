@@ -7,17 +7,14 @@
     <div class="content">
         <div style="float: right; margin-right: 300px;">
             <div class="dropdown">
-                <button onclick="location.href='/sip/during-student-view/'" class="btn btn-success">Create Dept Chair</button>
+                <button onclick="location.href='/sip/dept-chairs/batch/template'" class="btn btn-success">Mass upload Template</button>
             </div>
             <div class="dropdown">
-                <h4 class="card-category"> Course Filter by: </h4>
-                <select class="form-control" id="course" required>
-                    <option disabled selected> Choose an option</option>
-                </select>
+                <h4 class="card-category"> Add File </h4>
+                <input type="file" class="form-control-file">
             </div>
             <div class="dropdown">
-                <h4 class="card-category"> Enter a Student Name: </h4>
-                <input type="text" class="form-control" id="search" placeholder="search">
+                <button onclick="location.href='/sip/dept-chairs/batch/template'" class="btn btn-primary">Mass upload Launch</button>
             </div>
         </div>   
     </div>

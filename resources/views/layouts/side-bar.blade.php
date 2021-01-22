@@ -15,13 +15,7 @@
           {{ Auth::user()->deptChair->employee_number}}
         @endif 
         <br/>
-        @if (Auth::user()->role_id == Status::STUDENT) 
-          {{Auth::user()->last_name . ',' . Auth::user()->first_name}}
-        @elseif (Auth::user()->role_id == Status::SIP)
-          {{ Auth::user()->sip->employee_number}}
-        @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
-          {{ Auth::user()->deptChair->employee_number}}
-        @endif 
+          {{Auth::user()->last_name . ', ' . Auth::user()->first_name}}
       </h5> 
     </center>
     </div>
