@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sip/end-internship-table', 'App\Http\Controllers\EndOfInternshipController@sipTableView');
     Route::get('/sip/end-student-view/{id}', 'App\Http\Controllers\EndOfInternshipController@sipViewStudent');
     Route::get('/sip/complete-end-internship/approved/{id}', 'App\Http\Controllers\EndOfInternshipController@sipCompleteStudent');
+    Route::get('/sip/dept-chairs/batch/template', 'App\Http\Controllers\DeptChairController@sample');
 
     Route::get('/dept-chair/intent-form', 'App\Http\Controllers\IntentFormController@deptChairView');
     Route::get('/dept-chair/during-internship', 'App\Http\Controllers\DuringInternshipController@deptChairTable');

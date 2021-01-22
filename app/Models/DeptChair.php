@@ -17,11 +17,10 @@ class DeptChair extends Model
     protected $table = 'dept_chair';
     
     public function user() {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function course() {
         return $this->belongsTo(Course::class, 'course_id');
     }
-
 }
