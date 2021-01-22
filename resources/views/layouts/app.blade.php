@@ -36,6 +36,7 @@
     <link href="{{ asset('css/drop-down.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/side-bar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pagination.css') }}" type="text/css" rel="stylesheet">
 </head>
 <style>
 * {
