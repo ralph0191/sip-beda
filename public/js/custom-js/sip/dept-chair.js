@@ -17,13 +17,16 @@ const ajaxUploadFile = () => {
     form_data.append('file', file);
 
     $.when(ajax.createWithFile('/sip/dept-chairs/batch/import', form_data)).done(function(response) {
+        console.log(response.status);
         switch(response.status) {
+           
             case HttpStatus.SUCCESS:
                 $.unblockUI();
                 populatePagination(response.data, '#dept-pagination');
                 
                 break;
-            case HttpStatus.HTTP_CONFLICT:
+            case HttpStatus.HTTP_NOT_ACCEPTABLE:
+                console.log('asdasd');
                 $.unblockUI();
                 alert(response.msg);
                 // alertify.error(response.msg);

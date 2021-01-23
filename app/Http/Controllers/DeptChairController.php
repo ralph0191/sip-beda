@@ -40,7 +40,7 @@ class DeptChairController extends Controller
 
         try {
             if(is_null($request->file('file'))) {
-                return response()->json(['success'=>Response::HTTP_NOT_ACCEPTABLE, 'msg' => 'file is empty']);
+                return response()->json(['status' =>Response::HTTP_NOT_ACCEPTABLE, 'msg' => 'file is empty']);
             }
 
             $spreadsheet = $request->file('file');
@@ -48,7 +48,7 @@ class DeptChairController extends Controller
             $allowed         = ['csv','xlsx','xls'];
 
             if (in_array($extension, $allowed) === FALSE) {
-                return response()->json(['status'=>Response::HTTP_NOT_ACCEPTABLE,
+                return response()->json(['status'=> Response::HTTP_NOT_ACCEPTABLE,
                     'msg' => 'File is not in ' . implode(',', $allowed) . ' format']);
             }
             DB::beginTransaction();
