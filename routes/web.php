@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
         return view('profile/index');
     });
 
+    Route::put('/profile/update', 'App\Http\Controllers\IntentFormController@updateUser');
+
     Route::get('/student/intent-form/approved', 'App\Http\Controllers\IntentFormController@approvedIntentForm');
 
     Route::get('/student/pre-internship', 'App\Http\Controllers\PreInternshipController@studentView');
@@ -62,7 +64,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sip/end-internship-table', 'App\Http\Controllers\EndOfInternshipController@sipTableView');
     Route::get('/sip/end-student-view/{id}', 'App\Http\Controllers\EndOfInternshipController@sipViewStudent');
     Route::get('/sip/complete-end-internship/approved/{id}', 'App\Http\Controllers\EndOfInternshipController@sipCompleteStudent');
-    Route::get('/sip/dept-chairs/batch/template', 'App\Http\Controllers\DeptChairController@sample');
+    Route::get('/sip/dept-chairs/batch/template', 'App\Http\Controllers\DeptChairController@try');
+    Route::post('/sip/dept-chairs/batch/import', 'App\Http\Controllers\DeptChairController@import');
+    Route::get('/sip/dept-chairs/paginate', 'App\Http\Controllers\DeptChairController@deptChairPaginate');
+
+    
 
     Route::get('/dept-chair/intent-form', 'App\Http\Controllers\IntentFormController@deptChairView');
     Route::get('/dept-chair/during-internship', 'App\Http\Controllers\DuringInternshipController@deptChairTable');
