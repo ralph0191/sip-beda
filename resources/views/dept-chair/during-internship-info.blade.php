@@ -16,11 +16,11 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th scope="col" width="800">Desc</th>
-                                        <th scope="col" width="400">Files</th>
+                                        <th scope="col" width="500">Desc</th>
+                                        <th scope="col">Files</th>
                                         <th scope="col">Remarks</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col" width="200">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>

@@ -20,7 +20,7 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mobile Number</label>
-                                    <input type="email" id="mobile_number" class="form-control" placeholder="Mobile Number" >
+                                    <input type="text" id="mobile_number" class="form-control" placeholder="Mobile Number" value="{{Auth::user()->mobile_number}}" >
                                 </div>
                             </div>
                         </div>
@@ -86,19 +86,24 @@
                     </div>
                     <div class="card-body">
                         <div class="author">
-                            <a href="#">
-                            <img class="avatar border-gray" src="{{asset('images/me.jpg')}}" alt="...">
-                            <h5 class="title">{{ Auth::user()->last_name}}</h5>
-                            </a>
+                            
+                            <center> <img class="avatar border-gray profile-pic" src="{{asset('images/me.jpg')}}" alt="..."> </center>
+                            <div>
+                                <i class="fa fa-camera upload-button"></i>
+                                <input class="file-upload" type="file" accept="image/*"/>
+                            </div>
+                            
+                            <h5 class="title">{{ Auth::user()->first_name . " ". Auth::user()->last_name }}</h5>
                             <p class="description">
-                            michael24
+                                @if (Auth::user()->role_id == Status::STUDENT)
+                                    {{Auth::user()->student->course->name}}
+                                @elseif (Auth::user()->role_id == Status::SIP)
+                                    SIP
+                                @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
+                                    {{Auth::user()->deptChair->course->name}}
+                                @endif
                             </p>
                         </div>
-                        {{-- <p class="description text-center">
-                            "Lamborghini Mercy <br>
-                            Your chick she so thirsty <br>
-                            I'm in that two seat Lambo"
-                        </p> --}}
                     </div>
                     <hr>
                 </div>
