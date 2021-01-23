@@ -15,7 +15,7 @@
           {{ Auth::user()->deptChair->employee_number}}
         @endif 
         <br/>
-          {{Auth::user()->last_name . ', ' . Auth::user()->first_name}}
+          {{Auth::user()->first_name . ' ' . Auth::user()->last_name}}
       </h5> 
     </center>
     </div>
