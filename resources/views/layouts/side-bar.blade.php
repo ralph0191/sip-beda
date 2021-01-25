@@ -23,86 +23,76 @@
       <ul class="nav">
         @if (Auth::user()->role_id == Status::STUDENT)
           <li class="active ">
-            <a href="/home"><i class="now-ui-icons files_box"></i><p style="font-size:14px;">Dashboard</p></a>  
+            <a href="/home">
+              <p style="font-size:18px; text-align: center;">Dashboard</p>
+            </a>  
           </li>
           @if (Auth::user()->student->studentProgress->read_form == Status::NOT_STARTED)
             <li class="active ">
               <a href="/student/intent-form">
-                <i class="now-ui-icons files_box"></i>
-                <p style="font-size:14px;">Intent Form</p>
+                <p style="font-size:18px; text-align: center;">Intent Form</p>
               </a>
             </li>
           @elseif (Auth::user()->student->studentProgress->read_form == Status::APPROVED && Auth::user()->student->studentProgress->pre_internship_progress == Status::PENDING)
             <li class="active ">
               <a href="/student/pre-internship">
-                <i class="now-ui-icons files_box"></i>
-                <p style="font-size:14px;">Pre-Internship</p>
+                <p style="font-size:18px; text-align: center;">Pre-Internship</p>
               </a>
             </li>
           @elseif (Auth::user()->student->studentProgress->during_internship_progress == Status::PENDING)
             <li class="active ">
               <a href="/student/during-internship">
-                <i class="now-ui-icons files_box"></i>
-                <p style="font-size:14px;">During Internship</p>
+                <p style="font-size:18px; text-align: center;">During Internship</p>
               </a>
             </li>
           @elseif (Auth::user()->student->studentProgress->end_internship_progress == Status::PENDING)
             <li class="active ">
               <a href="/student/end-internship">
-                <i class="now-ui-icons files_box"></i>
-                <p style="font-size:14px;">End of Internship</p>
+                <p style="font-size:18px; text-align: center;">End of Internship</p>
               </a>
             </li>
           @endif
         @elseif (Auth::user()->role_id == Status::SIP)
           <li class="active ">
             <a href="/home">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">Dashboard</p>
+              <p style="font-size:18px; text-align: center;">Dashboard</p>
             </a>
           </li>
           <li class="active ">
             <a href="/sip/pre-internship-table">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">Pre Internship</p>
+              <p style="font-size:18px; text-align: center;">Pre Internship</p>
             </a>
           </li>
           <li class="active ">
             <a href="/sip/during-internship">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">During Internship</p>
+              <p style="font-size:18px; text-align: center;">During Internship</p>
             </a>
           </li>
           <li class="active ">
             <a href="/sip/end-internship-table">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">Post Internship</p>
+              <p style="font-size:18px; text-align: center;">Post Internship</p>
             </a>
           </li>
           
           <li class="active ">
             <a href="/sip/dept-chairs">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">Dept Chairs</p>
+              <p style="font-size:18px; text-align: center;">Dept Chairs</p>
             </a>
           </li>
         @elseif (Auth::user()->role_id == Status::DEPT_CHAIR)
           <li class="active ">
             <a href="/dept-chair/intent-form">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">Intent Form</p>
+              <p style="font-size:18px; text-align: center;">Intent Form</p>
             </a>
           </li>
           <li class="active ">
             <a href="/dept-chair/during-internship">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">During Internship</p>
+              <p style="font-size:18px; text-align: center;">During Internship</p>
             </a>
           </li>
           <li class="active ">
             <a href="/dept-chair/end-internship">
-              <i class="now-ui-icons files_box"></i>
-              <p style="font-size:14px;">End of Internship</p>
+              <p style="font-size:18px; text-align: center;">End of Internship</p>
             </a>
           </li>
           {{-- <a href="/home" class="list-group-item list-group-item-action">Dashboard</a>
