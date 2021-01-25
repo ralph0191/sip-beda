@@ -73,7 +73,7 @@
                             <h4 class="card-category">Complete During-Internship</h4>
                         </div>
                         <div class="card-body">
-                        <button class="btn btn-success" style="margin-right: 50px; margin-bottom:10px;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
+                        <button class="btn btn-success" style="max-width: 100%;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
                         </div>
                     </div>
                 </div>

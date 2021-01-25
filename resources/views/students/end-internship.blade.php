@@ -75,7 +75,7 @@
                             <h4 class="card-title">File Submission</h4>
                         </div>
                         <div class="card-body">
-                        <button class="btn btn-primary" style="margin-right: 50px; margin-bottom:10px;"data-toggle="modal" data-target="#addFileModal">Add Attachment</button>
+                        <button class="btn btn-primary" style="max-width: 100%;" data-toggle="modal" data-target="#addFileModal">Add Attachment</button>
                         </div>
                     </div>
                 </div>
