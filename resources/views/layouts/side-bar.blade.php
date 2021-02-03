@@ -73,6 +73,11 @@
               <p style="font-size:18px; text-align: center;">Post Internship</p>
             </a>
           </li>
+          <li class="active ">
+            <a href="/sip/completed-internship-table">
+              <p style="font-size:18px; text-align: center;">Completed Internship</p>
+            </a>
+          </li>
           
           <li class="active ">
             <a href="/sip/dept-chairs">
@@ -93,6 +98,11 @@
           <li class="active ">
             <a href="/dept-chair/end-internship">
               <p style="font-size:18px; text-align: center;">End of Internship</p>
+            </a>
+          </li>
+          <li class="active ">
+            <a href="/dept-chair/completed-internship">
+              <p style="font-size:18px; text-align: center;">Completed Internship</p>
             </a>
           </li>
           {{-- <a href="/home" class="list-group-item list-group-item-action">Dashboard</a>

@@ -17,22 +17,60 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DuringInternshipController extends Controller
 {
-    public function sipTableView()
+    public function sipTableView(Request $request)
     {
+        $courseId = $request->courseId;
+        $name = $request->name;
+
         $students = Student::whereHas('studentProgress', function ($q) {
             $q->where('during_internship_progress', SipStatus::APPROVED);
-        })->get();
+        })->with('user', 'course');
 
-        return view('sip.during-internship-table', compact('students'));
+        if ($name != null) {
+            $students->whereHas('user', function ($q) use ($name) {
+                $q->where('first_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('middle_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+                    ;
+            })->orWhere('student_number' , 'LIKE', '%' . $name . '%');
+        }
+
+        if ($courseId != null) {
+            $students->whereHas('course', function ($q) use ($courseId) {
+                $q->where('id', $courseId);
+            });
+        }
+
+        return response()->json([
+            'status' => Response::HTTP_OK,
+            'data'   => $students->get()
+        ]);
     }
 
-    public function deptChairTable()
+    public function deptChairTable(Request $request)
     {
-        $students = Student::whereHas('studentProgress', function ($q) {
+        $name = $request->name;
+        $courseId = Auth::user()->deptChair->course->id;
+        
+        $students = Student::whereHas('course', function ($q) use ($courseId) {
+            $q->where('id', $courseId);
+        })->whereHas('studentProgress', function ($q) {
             $q->where('during_internship_progress', SipStatus::PENDING);
-        })->get();
+        })->with('user', 'course');
 
-        return view('dept-chair.during-internship', compact('students'));
+        if ($name != null) {
+            $students->whereHas('user', function ($q) use ($name) {
+                $q->where('first_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('middle_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+                    ;
+            })->orWhere('student_number' , 'LIKE', '%' . $name . '%');
+        }
+
+        return response()->json([
+            'status' => Response::HTTP_OK,
+            'data'   => $students->get()
+        ]);
     }
 
     public function deptChairTableView($id)
@@ -129,11 +167,19 @@ class DuringInternshipController extends Controller
 
     public function deptChairCompleteStudent($id)
     {
-        $studentProgress = StudentProgress::where('student_id', $id)->first();
-        $studentProgress->during_internship_progress = SipStatus::APPROVED;
-        $studentProgress->update();
+        $studentRequirements = InternshipData::whereIn('id' ,SipStatus::DURING_INTERNSHIP_ARRAY)
+        ->where('student_id', $id)->where('status', SipStatus::APPROVED)->count();
+        
+        if ($studentRequirements == SipStatus::DURING_INTERNSHIP_REQUIREMENTS) {
+            $studentProgress = StudentProgress::where('student_id', $id)->first();
+            $studentProgress->during_internship_progress = SipStatus::APPROVED;
+            $studentProgress->update();
 
-        return response()->json(['status' => Response::HTTP_OK]);
+            return response()->json(['status' => Response::HTTP_OK]);
+        }  else {
+            return response()->json(['status' => Response::HTTP_NOT_ACCEPTABLE]);
+        }
+        
     }
 
     public function sipCompleteStudent($id)

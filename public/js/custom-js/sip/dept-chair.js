@@ -39,6 +39,8 @@ const ajaxUploadFile = () => {
         $('#upload').val(null);
     });
 }
+
+
 const populatePagination = (data, dom) => {
     $(dom).pagination({
         dataSource: data,

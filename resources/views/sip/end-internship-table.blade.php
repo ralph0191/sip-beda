@@ -13,20 +13,20 @@
                 </select>
             </div>
             <div class="dropdown">
-                <h4 class="card-category"> Enter a Student Name: </h4>
-                <input type="text" id="search" placeholder="search">
+                <h4 class="card-category"> Enter a Student Name or Student Number: </h4>
+                <input type="text" class="form-control" id="search" placeholder="search">
             </div>
         </div>   
     </div>
 
     <div class="content">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
-                                <table class="table">
-                                    <thead>
+                                <table class="table table-hover text-center ">
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Student ID</th>
                                         <th scope="col">Student Name</th>
@@ -34,7 +34,7 @@
                                     </tr>
                                     </thead>
                                     <tbody id="table-body">
-                                        @foreach ($students as $student)
+                                        {{-- @foreach ($students as $student)
                                             <tr>
                                                 <td scope="col">{{$student->student_number}}</td>
                                                 <td scope="col">{{$student->user->last_name . ' ' . $student->user->first_name}}</td>
@@ -42,7 +42,7 @@
                                                     <button onclick="location.href='/sip/end-student-view/{{$student->id}}'" class="btn btn-primary">View Student</button>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -52,4 +52,6 @@
             </div>
         </div>
     </div>
+    <input type="hidden" value="2" id="internship-type">
+    <script type="text/javascript" src="{{ asset('js/custom-js/sip/during-internship-table.js') }}"> </script>
 @endsection

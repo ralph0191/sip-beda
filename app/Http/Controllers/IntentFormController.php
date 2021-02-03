@@ -18,6 +18,9 @@ class IntentFormController extends Controller
     public function approvedIntentForm() 
     {
         $studentProgress = StudentProgress::where('student_id', Auth::user()->student->id)->first();
+        if ($studentProgress->read_form = SipStatus::APPROVED) {
+            return response()->json(['status' => Response::HTTP_OK,'course' => $studentProgress]);
+        }
         $studentProgress->read_form = SipStatus::PENDING;
         $studentProgress->update();
 

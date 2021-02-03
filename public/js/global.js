@@ -29,8 +29,10 @@ function defineStatus() {
          APPROVED:              1,
          DECLINED:              2,
      
-         OFF:                   0,
-		 ON:                    1,
+         PRE_INTERN:            0,
+		 DURING_INTERN:         1,
+		 END_INTERN:            2,
+		 COMPLETED_INTERN:		3,
 		 
 		 MALE:					1,
 		 FEMALE:				2,
@@ -219,7 +221,7 @@ function defineAjaxRequest() {
 			return $.ajax({
 				url: url,
 				type: "PUT",
-				data: data,
+				data: JSON.stringify(data),
 				dataType: "json",
 				contentType: "application/json",
 				mimeType: "application/json",

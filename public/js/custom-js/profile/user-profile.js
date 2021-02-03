@@ -35,10 +35,10 @@ const attachListenerProfilePicture = () => {
 }
 
 const ajaxUploadFile = () => {
-    let file =  $('#file')[0].files[0];
-    var user = {};
+    // let file =  $('#file')[0].files[0];
+    const user = {};
     let formData = new FormData();
-    formData.append('file', file);
+    // formData.append('file', file);
 
     user.firstName = $('#first_name').val();
     user.middleName = $('#middle_name').val();
@@ -49,10 +49,11 @@ const ajaxUploadFile = () => {
     
     // console.log(user.firstName);
 
-    formData.append('user' , JSON.stringify(user));
+    // formData.append('user' , JSON.stringify(user));
+    // console.log(JSON.stringify(user));
 
     if (validate(user)) {
-        $.when(ajax.updateNoId('/profile/update', formData)).done(function(response) {
+        $.when(ajax.updateNoId('/profile/update', user)).done(function(response) {
             switch(response.status) {
                 case HttpStatus.SUCCESS:
                    alert('Successfully Updated.');
@@ -84,9 +85,9 @@ function validate(user) {
         return false;
     }
 
-    if (!$('#email').val()) {
-        return false;
-    }
+        // if (!$('#email').val()) {
+        //     return false;
+        // }
 
     return validation;
 }
