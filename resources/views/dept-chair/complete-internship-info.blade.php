@@ -3,14 +3,14 @@
 @section('content')
     @if (Auth::user())
         <div class="card-header ">
-            <h4 class="card-title">During Internship Requirements</h4>
+            <h4 class="card-title">Completed Internship</h4>
             <h5 class="card-category">{{$student->user->last_name . ' ' . $student->user->first_name}}</h5>
             <h5 class="card-category">{{$student->course->name}}</h5>
         </div>
 
         <div class="content">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">  
@@ -22,7 +22,6 @@
                                         <th scope="col">Remarks</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Date Submitted</th>
-                                        <th scope="col" width="200">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -67,16 +66,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2" style="padding-top:70px; padding-right:70px;">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-category">Complete During-Internship</h4>
-                        </div>
-                        <div class="card-body">
-                        <button class="btn btn-success" style="max-width: 100%;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
                         </div>
                     </div>
                 </div>

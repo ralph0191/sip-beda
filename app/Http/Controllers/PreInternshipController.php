@@ -54,8 +54,7 @@ class PreInternshipController extends Controller
                     'file_name' => $file->getClientOriginalName(),
                     'file_url'  => $path
                 ]);
-
-                // $internshipData->file_url = $path;
+                
                 $internshipData->status = SipStatus::PENDING;
                 $internshipData->update();
             }
@@ -76,13 +75,34 @@ class PreInternshipController extends Controller
         return Storage::download($internshipFile->file_url);
     }
 
-    public function sipTableView()
+    public function sipTableView(Request $request)
     {
+        $courseId = $request->courseId;
+        $name = $request->name;
+
         $students = Student::whereHas('studentProgress', function ($q) {
             $q->where('pre_internship_progress', SipStatus::PENDING);
-        })->get();
+        })->with('user', 'course');
 
-        return view('sip.pre-internship-table', compact('students'));
+        if ($name != null) {
+            $students->whereHas('user', function ($q) use ($name) {
+                $q->where('first_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('middle_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+                    ;
+            })->orWhere('student_number' , 'LIKE', '%' . $name . '%');
+        }
+
+        if ($courseId != null) {
+            $students->whereHas('course', function ($q) use ($courseId) {
+                $q->where('id', $courseId);
+            });
+        }
+
+        return response()->json([
+            'status' => Response::HTTP_OK,
+            'data'   => $students->get()
+        ]);
     }
 
     public function sipViewStudent($id)
@@ -102,16 +122,24 @@ class PreInternshipController extends Controller
 
     public function sipCompleteStudent($id)
     {
-        $studentProgress = StudentProgress::where('student_id', $id)->first();
-        $studentProgress->pre_internship_progress = SipStatus::APPROVED;
-        $studentProgress->during_internship_progress = SipStatus::PENDING;
-        $studentProgress->update();
+        $studentRequirements = InternshipData::whereIn('id' ,SipStatus::PRE_INTERNSHIP_ARRAY)
+        ->where('student_id', $id)->where('status', SipStatus::APPROVED)->count();
 
-        $students = Student::whereHas('studentProgress', function ($q) {
-            $q->where('pre_internship_progress', SipStatus::PENDING);
-        })->get();
+        if ($studentRequirements == SipStatus::PRE_INTERNSHIP_REQUIREMENTS) {
+            $studentProgress = StudentProgress::where('student_id', $id)->first();
+            $studentProgress->pre_internship_progress = SipStatus::APPROVED;
+            $studentProgress->during_internship_progress = SipStatus::PENDING;
+            $studentProgress->update();
 
-        return response()->json(['status' => Response::HTTP_OK]);
+            $students = Student::whereHas('studentProgress', function ($q) {
+                $q->where('pre_internship_progress', SipStatus::PENDING);
+            })->get();
+
+            return response()->json(['status' => Response::HTTP_OK]);
+        } else {
+            return response()->json(['status' => Response::HTTP_NOT_ACCEPTABLE]);
+        }
+        
     }
 
     public function sipApprovedFile(Request $request)

@@ -15,7 +15,9 @@ const attachListenerCompleteBtn=()=> {
                 case HttpStatus.SUCCESS:
                     alert('Student is now completed.');
                     redirect('/sip/pre-internship-table' ,1000);
-                break;  
+                break; 
+                case HttpStatus.HTTP_NOT_ACCEPTABLE:
+                    alert('Student is still incompleted on requirements.')
             }
         });
     });

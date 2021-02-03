@@ -49,6 +49,8 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $regex = '/(\+?\d{2}?\s?\d{3}\s?\d{3}\s?\d{4})|([0]\d{3}\s?\d{3}\s?\d{4})/';
+        
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
@@ -56,7 +58,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'course' => ['required', 'string'],
-            'student_number' => ['required', 'int']
+            'student_number' => ['required', 'int'],
+            'mobile_number' => ['required', 'string', 'regex:'.$regex]
         ]);
     }
 

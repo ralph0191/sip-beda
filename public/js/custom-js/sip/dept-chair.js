@@ -26,7 +26,11 @@ const ajaxUploadFile = () => {
                 
                 break;
             case HttpStatus.HTTP_NOT_ACCEPTABLE:
-                console.log('asdasd');
+                $.unblockUI();
+                alert(response.msg);
+                // alertify.error(response.msg);
+                break;
+            case HttpStatus.HTTP_CONFLICT:
                 $.unblockUI();
                 alert(response.msg);
                 // alertify.error(response.msg);
@@ -35,6 +39,8 @@ const ajaxUploadFile = () => {
         $('#upload').val(null);
     });
 }
+
+
 const populatePagination = (data, dom) => {
     $(dom).pagination({
         dataSource: data,

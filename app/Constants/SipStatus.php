@@ -35,4 +35,22 @@ Class SipStatus {
     const ACCEPTED = 1;
     const DECLINED = 2;
 
+    const PRE_INTERNSHIP_REQUIREMENTS = 11;
+
+    const PRE_INTERNSHIP_ARRAY = [
+        1, 2 ,3 ,4 ,5 ,6, 7, 8, 9, 10, 11
+    ];
+
+    const DURING_INTERNSHIP_REQUIREMENTS = 3;
+
+    const DURING_INTERNSHIP_ARRAY = [
+        12, 13, 14
+    ];
+
+    const END_INTERNSHIP_REQUIREMENTS = 3;
+
+    const END_INTERNSHIP_ARRAY = [
+        15, 16, 17
+    ];
+
 }

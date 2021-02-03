@@ -20,27 +20,19 @@
     </div>
     <div class="content">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr class="text-center">
-                                        <th scope="col">Employee Number</th>
-                                        <th scope="col">Dept Chair Name</th>
-                                        <th scope="col">Course</th>
-                                    </tr>
+                                <table class="table table-hover">
+                                    <thead class="thead-dark">
+                                        <tr class="text-center">
+                                            <th scope="col">Employee Number</th>
+                                            <th scope="col">Dept Chair Name</th>
+                                            <th scope="col">Course</th>
+                                        </tr>
                                     </thead>
                                     <tbody id="table-body">
-                                        {{-- @foreach ($deptChairs as $deptChair)
-                                            <tr>
-                                                <td scope="col">{{$deptChair->employee_number}}</td>
-                                                <td scope="col">{{$deptChair->user->last_name . ' ' . $deptChair->user->first_name}}</td>
-                                                <td>{{$deptChair->course->name}}</td>
-                                                <td scope="col"><button onclick="location.href='/sip/during-student-view/{{$deptChair->id}}'" class="btn btn-primary">View Student</button></td>
-                                            </tr>
-                                        @endforeach --}}
                                     </tbody>
                                 </table>
                                 <div id="dept-pagination"></div>

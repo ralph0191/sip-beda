@@ -16,22 +16,60 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EndOfInternshipController extends Controller
 {
-    public function sipTableView()
+    public function sipTableView(Request $request)
     {
+        $courseId = $request->courseId;
+        $name = $request->name;
+
         $students = Student::whereHas('studentProgress', function ($q) {
             $q->where('end_internship_progress', SipStatus::APPROVED);
-        })->get();
+        })->with('user', 'course');
 
-        return view('sip.end-internship-table', compact('students'));
+        if ($name != null) {
+            $students->whereHas('user', function ($q) use ($name) {
+                $q->where('first_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('middle_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+                    ;
+            })->orWhere('student_number' , 'LIKE', '%' . $name . '%');
+        }
+
+        if ($courseId != null) {
+            $students->whereHas('course', function ($q) use ($courseId) {
+                $q->where('id', $courseId);
+            });
+        }
+
+        return response()->json([
+            'status' => Response::HTTP_OK,
+            'data'   => $students->get()
+        ]);
     }
 
-    public function deptChairTable()
+    public function deptChairTable(Request $request)
     {
-        $students = Student::whereHas('studentProgress', function ($q) {
+        $name = $request->name;
+        $courseId = Auth::user()->deptChair->course->id;
+        
+        $students = Student::whereHas('course', function ($q) use ($courseId) {
+            $q->where('id', $courseId);
+        })->whereHas('studentProgress', function ($q) {
             $q->where('end_internship_progress', SipStatus::PENDING);
-        })->get();
+        })->with('user', 'course');
 
-        return view('dept-chair.end-of-internship', compact('students'));
+        if ($name != null) {
+            $students->whereHas('user', function ($q) use ($name) {
+                $q->where('first_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('middle_name', 'LIKE', '%' . $name . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+                    ;
+            })->orWhere('student_number' , 'LIKE', '%' . $name . '%');
+        }
+
+        return response()->json([
+            'status' => Response::HTTP_OK,
+            'data'   => $students->get()
+        ]);
     }
 
     public function deptChairViewStudent($id)

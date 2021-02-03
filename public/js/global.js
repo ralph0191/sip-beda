@@ -29,8 +29,10 @@ function defineStatus() {
          APPROVED:              1,
          DECLINED:              2,
      
-         OFF:                   0,
-		 ON:                    1,
+         PRE_INTERN:            0,
+		 DURING_INTERN:         1,
+		 END_INTERN:            2,
+		 COMPLETED_INTERN:		3,
 		 
 		 MALE:					1,
 		 FEMALE:				2,
@@ -188,6 +190,36 @@ function defineAjaxRequest() {
 		update : function(url,id,data) {
 			return $.ajax({
 				url: url + id,
+				type: "PUT",
+				data: JSON.stringify(data),
+				dataType: "json",
+				contentType: "application/json",
+				mimeType: "application/json",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+			}).done(function(response) {
+				switch(response.status) {
+					case HttpStatus.SUCCESS:
+						alertify.success(Message.SUCCESS_UPDATE);
+                        break;
+                    case HttpStatus.NO_CONTENT:
+                        alertify.warning(Message.NO_CONTENT);
+                        break;
+                    case HttpStatus.UNKNOWN_STATUS:
+                        alertify.error(Message.UNKNOWN_STATUS);
+                        break;
+                    case HttpStatus.UNPROCESSABLE_ENTITY:
+                        alertify.error(Message.UNPROCESSABLE_ENTITY);
+                        break;
+					case HttpStatus.INTERNAL_SERVER_ERROR:
+						alertify.error(Message.INTERNAL_SERVER_ERROR);
+						break;
+				}
+			});
+		},
+
+		updateNoId : function(url,data) {
+			return $.ajax({
+				url: url,
 				type: "PUT",
 				data: JSON.stringify(data),
 				dataType: "json",
