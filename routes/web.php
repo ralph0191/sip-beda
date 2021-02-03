@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
         return view('profile/index');
     });
 
-    Route::put('/profile/update', 'App\Http\Controllers\IntentFormController@updateUser');
+    Route::put('/profile/update', 'App\Http\Controllers\UserProfileController@updateUser');
 
     Route::get('/student/intent-form/approved', 'App\Http\Controllers\IntentFormController@approvedIntentForm');
 

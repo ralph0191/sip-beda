@@ -12,7 +12,7 @@
     <!-- Scripts -->
     
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ asset('js/upload-dp.js') }}"></script>
+    {{-- <script src="{{ asset('js/upload-dp.js') }}"></script> --}}
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/global.js') }}"></script>
@@ -20,6 +20,7 @@
     <script type="text/javascript" src="{{ asset('js/library/alertify.min.js') }} "></script>
     <script type="text/javascript" src="{{ asset('js/library/pagination.min.js') }} "></script>
     <script type="text/javascript" src="{{ asset('js/library/jquery.blockUI.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('js/upload-dp.js') }}"></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

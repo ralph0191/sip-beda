@@ -215,6 +215,36 @@ function defineAjaxRequest() {
 			});
 		},
 
+		updateNoId : function(url,data) {
+			return $.ajax({
+				url: url,
+				type: "PUT",
+				data: data,
+				dataType: "json",
+				contentType: "application/json",
+				mimeType: "application/json",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+			}).done(function(response) {
+				switch(response.status) {
+					case HttpStatus.SUCCESS:
+						alertify.success(Message.SUCCESS_UPDATE);
+                        break;
+                    case HttpStatus.NO_CONTENT:
+                        alertify.warning(Message.NO_CONTENT);
+                        break;
+                    case HttpStatus.UNKNOWN_STATUS:
+                        alertify.error(Message.UNKNOWN_STATUS);
+                        break;
+                    case HttpStatus.UNPROCESSABLE_ENTITY:
+                        alertify.error(Message.UNPROCESSABLE_ENTITY);
+                        break;
+					case HttpStatus.INTERNAL_SERVER_ERROR:
+						alertify.error(Message.INTERNAL_SERVER_ERROR);
+						break;
+				}
+			});
+		},
+
 		updateWithoutData : function(url,id) {
 			return $.ajax({
 				url: url + id,
