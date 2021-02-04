@@ -69,7 +69,7 @@
                         <div class="card-body">
                             <div class="author">
                                 
-                                <center> <img class="avatar border-gray profile-pic" src="{{asset('images/me.jpg')}}" alt="..."> </center>
+                                <center> <img class="avatar border-gray profile-pic" src="{{asset('storage/photo/'. Auth::user()->picture)}}" alt="..."> </center>
                                 <div>
                                     <i class="fa fa-camera upload-button"></i>
                                     <input class="file-upload" id="file" type="file" accept="image/*"/>
@@ -86,24 +86,22 @@
                                     @endif
                                 </p>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <center>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Change Password
-                                        </button>
-                                    </center>
-                                </div> 
+                            <div class="col-md-12">
+                                <center>
+                                    <button class="btn btn-primary" id="submit-picture">
+                                        Submit Picture
+                                    </button>
+                                </center>
                             </div>
-                        <div class="col-md-12">
-                            <center>
-                                <button class="btn btn-primary" id="submit">
-                                    Submit Changes
-                                </button>
-                            </center>
+                            <div class="col-md-12">
+                                <center>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        Change Password
+                                    </button>
+                                </center>
+                            </div> 
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -122,25 +120,25 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Current Password</label>
-                                <input type="password" id="current_password" class="form-control" placeholder="Current password" value="">
+                                <input type="password" id="old-password" class="form-control" placeholder="Current password">
                             </div>
                         </div>
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label> New Password</label>
-                                <input type="password" id="password" class="form-control" placeholder="New Password" value="">
+                                <input type="password" id="password" class="form-control" placeholder="New Password">
                             </div>
                         </div>
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label> Confirm Password</label>
-                                <input type="password" class="form-control" placeholder=" Confirm Password" value="">
+                                <input type="password" id="confirm-password" class="form-control" placeholder=" Confirm Password">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="change-pass-btn">Save changes</button>
                     </div>
                 </div>
             </div>

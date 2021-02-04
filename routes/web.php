@@ -44,6 +44,9 @@ Route::group(['middleware' => ['auth']], function () {
 
    
     Route::put('/profile/update', 'App\Http\Controllers\UserProfileController@updateUser');
+    Route::put('/profile/change-password', 'App\Http\Controllers\UserProfileController@changePassword');
+    Route::post('/profile/change-picture', 'App\Http\Controllers\UserProfileController@changeProfilePic');
+    
 
     Route::get('/student/intent-form/approved', 'App\Http\Controllers\IntentFormController@approvedIntentForm');
 

@@ -1,13 +1,32 @@
 $(function() {
     attachListenerSubmitBtn();
     attachListenerProfilePicture();
+    attachListenerChangePasswordBtn();
+    attachListenerSubmitPhotoBtn();
 });
 
 const attachListenerSubmitBtn=()=> {
     $("#submit").click(function (e) { 
         // e.preventDefault();
         uiBlockerLoader();
-        ajaxUploadFile();
+        updateUser();
+    });
+}
+
+const attachListenerSubmitPhotoBtn=()=> {
+    $("#submit-picture").click(function (e) { 
+        // e.preventDefault();
+        uiBlockerLoader();
+        updateUserPhoto();
+    });
+}
+
+
+const attachListenerChangePasswordBtn=()=> {
+    $('body').on('click', '#change-pass-btn' ,function (e) { 
+        // e.preventDefault();
+        uiBlockerLoader();
+        updateUserPassword();
     });
 }
 
@@ -34,11 +53,8 @@ const attachListenerProfilePicture = () => {
     });
 }
 
-const ajaxUploadFile = () => {
-    // let file =  $('#file')[0].files[0];
+const updateUser = () => {
     const user = {};
-    let formData = new FormData();
-    // formData.append('file', file);
 
     user.firstName = $('#first_name').val();
     user.middleName = $('#middle_name').val();
@@ -46,21 +62,22 @@ const ajaxUploadFile = () => {
     user.email = $('#email').val();
     user.mobileNumber = $('#mobile_number').val();
     user.address = $('#address').val();
-    
-    // console.log(user.firstName);
-
-    // formData.append('user' , JSON.stringify(user));
-    // console.log(JSON.stringify(user));
 
     if (validate(user)) {
         $.when(ajax.updateNoId('/profile/update', user)).done(function(response) {
             switch(response.status) {
                 case HttpStatus.SUCCESS:
                    alert('Successfully Updated.');
-                case HttpStatus.HTTP_CONFLICT:
+                   $.unblockUI();
+                   redirect('/profile/form-profile' ,1000);
+                   break;
+                case HttpStatus.UNPROCESSABLE_ENTITY:
                     $.unblockUI();
-                    // alert(response.msg);
-                    // alertify.error(response.msg);
+                    let errorMessage = "";
+                    $.each(response.errors, function (indexInArray, error) {
+                        errorMessage += `${error[0]} \n`
+                    });
+                    alert(errorMessage);
                     break;
             }
         });
@@ -68,7 +85,67 @@ const ajaxUploadFile = () => {
         alert('Please fill up all Required details.')
         $.unblockUI();
     }
-    
+}
+
+const updateUserPassword = () => {
+    const user = {};
+
+    user.oldPassword = $('#old-password').val();
+    user.newPassword = $('#password').val();
+    user.confirmPassowrd = $('#confirm-password').val();
+
+    if (validatePassword()) {
+        $.when(ajax.updateNoId('/profile/change-password', user)).done(function(response) {
+            switch(response.status) {
+                case HttpStatus.SUCCESS:
+                    alert('Successfully Updated.');
+                    $.unblockUI();
+                    redirect('/profile/form-profile' ,1000);
+                    break;
+                case HttpStatus.UNPROCESSABLE_ENTITY:
+                    $.unblockUI();
+                    alert(response.error);
+                    break;
+            }
+        });
+    } else {
+        alert('New Password and confirm Password does not match');
+        $.unblockUI();
+    }
+}
+
+const updateUserPhoto = () => {
+
+    const file = {};
+    let formData = new FormData();
+    var fileLength = $("#file").get(0).files.length;
+
+    if (fileLength == 0) {
+        alert('File is empty.');
+        $.unblockUI();
+    } else {
+        formData.append('file', $('#file')[0].files[0]);
+        $.when(ajax.createWithFile('/profile/change-picture', formData)).done(function(response) {
+            switch(response.status) {
+                case HttpStatus.SUCCESS:
+                    alert('Successfully Updated.');
+                    $.unblockUI();
+                    redirect('/profile/form-profile' ,1000);
+                    break;
+                case HttpStatus.UNPROCESSABLE_ENTITY:
+                    $.unblockUI();
+                    alert(response.error);
+                    break;
+            }
+        });
+    }
+
+    // if (validatePassword()) {
+        
+    // } else {
+    //     alert('New Password and confirm Password does not match');
+    //     $.unblockUI();
+    // }
 }
 
 function validate(user) {
@@ -85,9 +162,33 @@ function validate(user) {
         return false;
     }
 
-        // if (!$('#email').val()) {
-        //     return false;
-        // }
+    if (!$('#email').val()) {
+        return false;
+    }
+
+    return validation;
+}
+
+
+function validatePassword() {
+    var letters = /^[A-Za-z]+$/;
+    var validation = true;
+    
+    if (!$('#old-password').val()) {
+        validation = false;
+    }
+    
+    if (!$('#password').val()) {
+        validation = false;
+    }
+
+    if (!$('#confirm-password').val()) {
+        validation = false;
+    }
+
+    if ($('#password').val() != $('#confirm-password').val()) {
+        validation = false;
+    }
 
     return validation;
 }

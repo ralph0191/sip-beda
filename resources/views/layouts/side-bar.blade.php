@@ -4,7 +4,7 @@
     <img src="{{asset('images/Logo.png')}}" alt="SIP SBCA" class="simple-text logo-normal siplogo">
   </div>
   <div class="logo">
-    <img src="{{asset('images/me.jpg')}}" alt="SIP SBCA" class="simple-text logo-normal profilepic">
+    <img src="{{asset('storage/photo/'. Auth::user()->picture)}}" alt="SIP SBCA" class="simple-text logo-normal profilepic">
     <center> 
       <h5 style="color:white; font-family:AgencyFB; font-style:Wide Black; font-size:18px;">
         @if (Auth::user()->role_id == Status::STUDENT) 

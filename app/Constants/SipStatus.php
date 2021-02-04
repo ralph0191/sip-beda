@@ -35,6 +35,9 @@ Class SipStatus {
     const ACCEPTED = 1;
     const DECLINED = 2;
 
+    const FIRST_OJT = 0;
+    const SECOND_OJT = 1;
+
     const PRE_INTERNSHIP_REQUIREMENTS = 11;
 
     const PRE_INTERNSHIP_ARRAY = [
