@@ -16,13 +16,13 @@
                             <div class="table-full-width table-responsive">  
                                 <table class="table table-bordered table-hover">
                                     <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col" width="500">Desc</th>
-                                        <th scope="col">Files</th>
-                                        <th scope="col">Remarks</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Date Submitted</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col" width="500">Desc</th>
+                                            <th scope="col">Files</th>
+                                            <th scope="col">Remarks</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Date Submitted</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($internshipData as $data)
@@ -51,7 +51,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                {{ $data->updated_at != null ? \Carbon\Carbon::parse($data->updated_at)->format('M d, Y') : ''}}
+                                                {{ $data->updated_at != null ? \Carbon\Carbon::parse($data->updated_at)->format('M d, Y g:i:A') : ''}}
                                             </td>
                                             <td>
                                                 @if ($data->status == Status::PENDING)
