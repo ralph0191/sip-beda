@@ -13,15 +13,16 @@
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col" width="500">Desc</th>
-                                        <th scope="col">Files</th>
-                                        <th scope="col">Remarks</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col" width="200">Action</th>
-                                    </tr>
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" width="500">Desc</th>
+                                            <th scope="col">Files</th>
+                                            <th scope="col">Remarks</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Date Submitted</th>
+                                            <th scope="col" width="200">Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($internshipData as $data)
@@ -49,7 +50,9 @@
                                                     Declined
                                                 @endif
                                             </td>
-                                            
+                                            <td>
+                                                {{ $data->updated_at != null ? \Carbon\Carbon::parse($data->updated_at)->format('M d, Y g:i:A') : ''}}
+                                            </td>
                                             <td>
                                                 @if ($data->status == 1)
                                                     <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 

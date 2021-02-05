@@ -52,7 +52,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                {{ $data->updated_at != null ? \Carbon\Carbon::parse($data->updated_at)->format('M d, Y') : ''}}
+                                                {{ $data->updated_at != null ? \Carbon\Carbon::parse($data->updated_at)->format('M d, Y g:i:A') : ''}}
                                             </td>
                                             <td>
                                                 @if ($data->status == Status::PENDING)

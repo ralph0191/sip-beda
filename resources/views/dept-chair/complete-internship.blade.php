@@ -21,7 +21,7 @@
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
                                 <table class="table table-hover text-center">
-                                    <thead class="thead-dark">
+                                    <thead style="background-color: #990f02; color: #fff;" class="text-center">
                                     <tr>
                                         <th scope="col">Student ID</th>
                                         <th scope="col">Student Name</th>

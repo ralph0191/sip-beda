@@ -23,7 +23,7 @@
         </div>
         <div class="content">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
