@@ -47,7 +47,7 @@
                                         @endforeach --}}
                                     </tbody>
                                 </table>
-                                <div id="pre-intern-pagination"></div>
+                                <div id="table-pagination"></div>
                             </div>
                         </div>   
                     </div>
@@ -55,11 +55,11 @@
             </div>
         </div>
         <input type="hidden" id="internship-type" value="0">
-        <script type="text/javascript" src="{{ asset('js/custom-js/sip/during-internship-table.js') }}"> </script>
+        
         <input type="hidden" value="0" id="internship-type">
     @else
     
     @endif
 
-    
+    <script type="text/javascript" src="{{ asset('js/custom-js/sip/during-internship-table.js') }}"> </script>
 @endsection
