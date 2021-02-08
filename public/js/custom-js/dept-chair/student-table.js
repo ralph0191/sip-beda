@@ -33,12 +33,7 @@ const attachNameListener = () => {
             switch(response.status) {
             
                 case HttpStatus.SUCCESS:
-
-                    if (response.data.length > 0) {
-                        populatePagination(response.data, '#table-pagination');
-                    }
-                    
-
+                    populatePagination(response.data, '#table-pagination');
                 break;  
             }
         });
@@ -46,7 +41,7 @@ const attachNameListener = () => {
     $('#search').keyup();
 }
 
-const populatePagination = (data, dom) => {
+const populatePagination = (data, dom) =>    {
     $(dom).pagination({
         dataSource: data,
         className: 'paginationjs-theme-blue',
