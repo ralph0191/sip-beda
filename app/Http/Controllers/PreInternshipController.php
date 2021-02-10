@@ -122,8 +122,11 @@ class PreInternshipController extends Controller
 
     public function sipCompleteStudent($id)
     {
-        $studentRequirements = InternshipData::whereIn('id' ,SipStatus::PRE_INTERNSHIP_ARRAY)
-        ->where('student_id', $id)->where('status', SipStatus::APPROVED)->count();
+        $studentRequirements = InternshipData::whereIn('internship_requirements_id' ,SipStatus::PRE_INTERNSHIP_ARRAY)
+        ->where([
+            ['student_id', '=', $id],
+            ['status', '=', SipStatus::APPROVED]
+        ])->count();
 
         if ($studentRequirements == SipStatus::PRE_INTERNSHIP_REQUIREMENTS) {
             $studentProgress = StudentProgress::where('student_id', $id)->first();
