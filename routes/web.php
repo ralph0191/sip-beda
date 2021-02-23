@@ -100,6 +100,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sip/complete-internship-table/get-users', 'App\Http\Controllers\CompletedInternshipController@sipTableView');
     Route::get('/sip/complete-student-view/{id}', 'App\Http\Controllers\CompletedInternshipController@sipViewStudent');
 
+    Route::get('/sip/pre-internship-all/chart', 'App\Http\Controllers\DashboardController@getAllSipPreInternshipData');
+    Route::get('/sip/during-internship-all/chart', 'App\Http\Controllers\DashboardController@getAllSipDuringInternshipData');
+    Route::get('/sip/end-internship-all/chart', 'App\Http\Controllers\DashboardController@getAllSipEndInternshipData');
+
+    Route::get('/sip/pre-internship-filtered/chart/{courseId}', 'App\Http\Controllers\DashboardController@getFilteredSipPreInternshipData');
+    Route::get('/sip/during-internship-filtered/chart/{courseId}', 'App\Http\Controllers\DashboardController@getFilteredSipDuringInternshipData');
+    Route::get('/sip/end-internship-filtered/chart/{courseId}', 'App\Http\Controllers\DashboardController@getFilteredSipEndInternshipData');
+
     Route::get('/dept-chair/during-internship', function () {
         return view('dept-chair.during-internship');
     });
