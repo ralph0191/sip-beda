@@ -20,6 +20,7 @@
     <script type="text/javascript" src="{{ asset('js/library/alertify.min.js') }} "></script>
     <script type="text/javascript" src="{{ asset('js/library/pagination.min.js') }} "></script>
     <script type="text/javascript" src="{{ asset('js/library/jquery.blockUI.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     {{-- <script type="text/javascript" src="{{ asset('js/upload-dp.js') }}"></script> --}}
 
     <!-- Fonts -->

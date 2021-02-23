@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 const attachListenerAcceptBtn=()=> {
 
-
     $(document).on("click", "#accept-btn",function(e) {
         e.preventDefault();
         uiBlockerLoader();

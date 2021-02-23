@@ -21,12 +21,12 @@
     </div>
     <div class="sidebar-wrapper" id="sidebar-wrapper">
       <ul class="nav">
+        <li class="active ">
+          <a href="/home">
+            <p style="font-size:18px; text-align: center;">Dashboard</p>
+          </a>  
+        </li>
         @if (Auth::user()->role_id == Status::STUDENT)
-          <li class="active ">
-            <a href="/home">
-              <p style="font-size:18px; text-align: center;">Dashboard</p>
-            </a>  
-          </li>
           @if (Auth::user()->student->studentProgress->read_form == Status::NOT_STARTED)
             <li class="active ">
               <a href="/student/intent-form">
