@@ -96,4 +96,76 @@ class DashboardController extends Controller
             'data' => $data
         ]);
     }
+
+    public function getAllSipPreInternshipData()
+    {   
+        $data = StudentProgress ::addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 0 THEN 1 ELSE 0 END) AS not_started'))
+        ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 1 THEN 1 ELSE 0 END) AS ongoing'))
+        ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 2 THEN 1 ELSE 0 END) AS finished'))->get();
+
+        return response()->json(['status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
+
+    public function getAllSipDuringInternshipData()
+    {   
+        $data = StudentProgress::addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 0 THEN 1 ELSE 0 END) AS not_started'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
+
+        return response()->json(['status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
+
+    public function getAllSipEndInternshipData()
+    {   
+        $data = StudentProgress::addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 0 THEN 1 ELSE 0 END) AS not_started'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
+
+        return response()->json(['status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
+
+    public function getFilteredSipPreInternshipData($courseId)
+    {   
+        $data = StudentProgress::whereHas('student', function ($query) use ($courseId) {
+            $query->where('course_id', $courseId);
+        })->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 0 THEN 1 ELSE 0 END) AS not_started'))
+        ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 1 THEN 1 ELSE 0 END) AS ongoing'))
+        ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 2 THEN 1 ELSE 0 END) AS finished'))->get();
+
+        return response()->json(['status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
+
+    public function getFilteredSipDuringInternshipData($courseId)
+    {   
+        $data = StudentProgress::whereHas('student', function ($query) use ($courseId) {
+            $query->where('course_id', $courseId);
+        })->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 0 THEN 1 ELSE 0 END) AS not_started'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
+
+        return response()->json(['status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
+
+    public function getFilteredSipEndInternshipData($courseId)
+    {   
+        $data = StudentProgress::whereHas('student', function ($query) use ($courseId) {
+            $query->where('course_id', $courseId);
+        })->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 0 THEN 1 ELSE 0 END) AS not_started'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
+        ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
+
+        return response()->json(['status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
 }

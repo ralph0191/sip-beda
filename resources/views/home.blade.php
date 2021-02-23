@@ -51,18 +51,48 @@
                         </div>
                     </div>
                 @elseif (Auth::user()->sip)
-                    <select class="form-control col-md-4  pull-right">
-                        <option>Choose an Option</option>
+                    <select class="form-control col-md-6" id="course">
                     </select>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Pre internship Progress</label>
+                            <div id="pre-sip-filtered-pie"></div>
+                        </div>
+                        <div class="col-md-4">  
+                            <label>During-internship Progress</label>
+                            <div id="during-sip-filtered-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>End-internship Progress</label>
+                            <div id="end-sip-filtered-pie"></div>
+                        </div>
+                    </div>
+                    <h3>All Courses</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Pre internship Progress</label>
+                            <div id="pre-sip-all-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>During-internship Progress</label>
+                            <div id="during-sip-all-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>End-internship Progress</label>
+                            <div id="end-sip-all-pie"></div>
+                        </div>
+                    </div>
                 @endif
             </div>
         </div>
 
         @if (Auth::user()->role_id == Status::STUDENT)
-            {{-- <script type="text/javascript" src="{{ asset('js/student-dashboard.js') }}"> </script> --}}
+            <script type="text/javascript" src="{{ asset('js/student-dashboard.js') }}"> </script>
         @elseif (Auth::user()->deptChair)
             <script type="text/javascript" src="{{ asset('js/dept-chair-dashboard.js') }}"> </script>
-        @else 
+        @elseif (Auth::user()->sip)
+            <script type="text/javascript" src="{{ asset('js/sip-dashboard.js') }}"> </script>
         @endif
     @else
     
