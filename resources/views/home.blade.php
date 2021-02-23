@@ -4,11 +4,70 @@
     @if (Auth::user()) 
         <div class="container-fluid">
             <h1 class="mt-4">Dashboard</h1>
-            <p>Voluptate tempor duis tempor cillum. Sint officia tempor nisi quis officia irure Lorem et adipisicing eu qui est nulla. Tempor ullamco laborum aute eiusmod consectetur cupidatat nulla minim aliquip et sit elit. Pariatur minim voluptate consequat culpa mollit. Enim nostrud occaecat cillum laborum fugiat id amet esse amet incididunt excepteur culpa minim.</p>
+            <div class="col-md-12">
+                @if (Auth::user()->student)
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Pre-internship Progress</label>
+                            <div id="pre-internship-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>During-internship Progress</label>
+                            <div id="during-internship-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>End-internship Progress</label>
+                            <div id="end-internship-pie"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" width="500">Desc</th>
+                                    <th scope="col">Remarks</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Updated Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                            </tbody>
+                        </table>
+                        <div id="table-pagination"></div>
+                    </div>
+                @elseif (Auth::user()->deptChair)
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Intent Forms Application</label>
+                            <div id="intent-form-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>During-internship Progress</label>
+                            <div id="during-dept-pie"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>End-internship Progress</label>
+                            <div id="end-dept-pie"></div>
+                        </div>
+                    </div>
+                @elseif (Auth::user()->sip)
+                    <select class="form-control col-md-4  pull-right">
+                        <option>Choose an Option</option>
+                    </select>
+                @endif
+            </div>
         </div>
+
+        @if (Auth::user()->role_id == Status::STUDENT)
+            {{-- <script type="text/javascript" src="{{ asset('js/student-dashboard.js') }}"> </script> --}}
+        @elseif (Auth::user()->deptChair)
+            <script type="text/javascript" src="{{ asset('js/dept-chair-dashboard.js') }}"> </script>
+        @else 
+        @endif
     @else
     
     @endif
+    
     
     
 @endsection

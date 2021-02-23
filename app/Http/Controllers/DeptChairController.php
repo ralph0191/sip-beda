@@ -14,7 +14,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DeptChairController extends Controller
 {
-    public function deptChairs() {
+    public function deptChairs() 
+    {
         $deptChairs = DeptChair::get();
         
         return view('sip.dept-chair-table', compact('deptChairs'));
@@ -37,7 +38,6 @@ class DeptChairController extends Controller
 
     public function import(Request $request)
     {
-
         try {
             if(is_null($request->file('file'))) {
                 return response()->json(['status' =>Response::HTTP_NOT_ACCEPTABLE, 'msg' => 'file is empty']);
@@ -68,8 +68,10 @@ class DeptChairController extends Controller
             $failure = $e->failures()[0];
             DB::rollback();
             $err = 'Error on row: '. $failure->row() . ', attribute: '. $failure->attribute() .', '. $failure->errors()[0];
+
             return response()->json(['status'=>Response::HTTP_CONFLICT,
-                'msg' => 'Could not import Dept Chairs, '. $err]);
+                'msg' => 'Could not import Dept Chairs, '. $err
+            ]);
         }
         
     }
