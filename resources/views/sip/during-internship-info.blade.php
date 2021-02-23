@@ -2,10 +2,20 @@
 
 @section('content')
     @if (Auth::user())
-        <div class="card-header ">
-            <h4 class="card-title">During Internship Requirements</h4>
-            <h5 class="card-category">{{$student->user->last_name . ' ' . $student->user->first_name}}</h5>
-            <h5 class="card-category">{{$student->course->name}}</h5>
+        <div class="card-header">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="card-title">During Internship Requirements</h4>
+                        <h5 class="card-category">{{$student->user->last_name . ' ' . $student->user->first_name}}</h5>
+                        <h5 class="card-category">{{$student->course->name}}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{asset('storage/photo/'. $student->user->picture)}}" style=" max-width: 4.5vw;
+                        height: auto;" alt="SIP SBCA" class="profilepic">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="content">

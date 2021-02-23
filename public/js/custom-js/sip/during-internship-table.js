@@ -43,10 +43,7 @@ const attachCourseTypeListener = () => {
             switch(response.status) {
             
                 case HttpStatus.SUCCESS:
-
-                    if (response.data.length > 0) {
-                        populatePagination(response.data, '#table-pagination');
-                    }
+                    populatePagination(response.data, '#table-pagination');
                     
 
                 break;  

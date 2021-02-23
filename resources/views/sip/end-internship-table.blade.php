@@ -30,6 +30,7 @@
                                     <tr>
                                         <th scope="col">Student ID</th>
                                         <th scope="col">Student Name</th>
+                                        <th scope="col">Course</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                     </thead>
@@ -45,6 +46,7 @@
                                         @endforeach --}}
                                     </tbody>
                                 </table>
+                                <div id="table-pagination"></div>
                             </div>
                         </div>
                     </div>

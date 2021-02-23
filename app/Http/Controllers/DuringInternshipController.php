@@ -167,7 +167,7 @@ class DuringInternshipController extends Controller
 
     public function deptChairCompleteStudent($id)
     {
-        $studentRequirements = InternshipData::whereIn('id' ,SipStatus::DURING_INTERNSHIP_ARRAY)
+        $studentRequirements = InternshipData::whereIn('internship_requirements_id' ,SipStatus::DURING_INTERNSHIP_ARRAY)
         ->where('student_id', $id)->where('status', SipStatus::APPROVED)->count();
         
         if ($studentRequirements == SipStatus::DURING_INTERNSHIP_REQUIREMENTS) {
