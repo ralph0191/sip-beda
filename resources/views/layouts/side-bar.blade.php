@@ -54,11 +54,6 @@
           @endif
         @elseif (Auth::user()->role_id == Status::SIP)
           <li class="active ">
-            <a href="/home">
-              <p style="font-size:18px; text-align: center;">Dashboard</p>
-            </a>
-          </li>
-          <li class="active ">
             <a href="/sip/pre-internship-table">
               <p style="font-size:18px; text-align: center;">Pre Internship</p>
             </a>
