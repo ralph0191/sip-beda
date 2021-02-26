@@ -25,9 +25,7 @@ const initIntentFormsChart=()=> {
                         },
                         series: dataArray,
                         labels: ["Haven\'t Submitted yet", 'Pending', 'Approved'],
-                        fill: {
-                            colors: ['#696969', '#ffa500', '#008000']
-                        },
+                        colors: ['#696969', '#ffa500', '#008000']
                     };
                     var chart = new ApexCharts(document.querySelector("#intent-form-pie"), options);
                     
@@ -39,9 +37,7 @@ const initIntentFormsChart=()=> {
                         },
                         series: [0, 100],
                         labels: ["Haven\'t Submitted yet", 'Pending', 'Approved'],
-                        fill: {
-                            colors: ['#008000', '#ffa500', '#696969']
-                        } 
+                        colors: ['#696969', '#ffa500', '#008000']
                     };
                     var chart = new ApexCharts(document.querySelector("#intent-form-pie"), options);
                     
@@ -68,14 +64,12 @@ const initDuringInternshipChart=()=> {
 
             if (response.data[0] != null) {
                 options = {
-                chart: {
-                    type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "On-going", "Finished"],
-                fill: {
+                    chart: {
+                        type: 'donut'
+                    },
+                    series: dataArray,
+                    labels: ["Not Started", "On-going", "Finished"],
                     colors: ['#696969', '#ffa500', '#008000']
-                },
                 };
                 var chart = new ApexCharts(document.querySelector("#during-dept-pie"), options);
                 
@@ -87,9 +81,7 @@ const initDuringInternshipChart=()=> {
                     },
                     series: [0, 0,0],
                     labels: ["Not Started", "On-going", "Finished"],
-                    fill: {
-                        colors: ['#696969', '#ffa500', '#008000']
-                    } 
+                    colors: ['#696969', '#ffa500', '#008000']
                 };
                 var chart = new ApexCharts(document.querySelector("#during-dept-pie"), options);
                 
@@ -116,14 +108,12 @@ const initEndInternshipChart=()=> {
 
             if (response.data[0] != null) {
                 options = {
-                chart: {
-                    type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "On-going", "Finished"],
-                fill: {
+                    chart: {
+                        type: 'donut'
+                    },
+                    series: dataArray,
+                    labels: ["Not Started", "On-going", "Finished"],
                     colors: ['#696969', '#ffa500', '#008000']
-                },
                 };
                 var chart = new ApexCharts(document.querySelector("#end-dept-pie"), options);
                 
@@ -135,9 +125,7 @@ const initEndInternshipChart=()=> {
                     },
                     series: [0, 0,0],
                     labels: ["Not Started", "On-going", "Finished"],
-                    fill: {
-                        colors: ['#696969', '#ffa500', '#008000']
-                    } 
+                    colors: ['#696969', '#ffa500', '#008000']
                 };
                 var chart = new ApexCharts(document.querySelector("#end-dept-pie"), options);
                 
