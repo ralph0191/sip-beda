@@ -45,39 +45,35 @@ const initPreInternshipChart=()=> {
 
         dataArray.push(parseInt(data[0].not_started));
         dataArray.push(parseInt(data[0].ongoing));
-        dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
-        case HttpStatus.SUCCESS:
-            if (response.data[0] != null) {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#pre-sip-all-pie"), options);
-                
-            chart.render();
-            } else {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: [0, 0, 0],
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#pre-sip-all-pie"), options);
-                
-            chart.render();
-            }
+            case HttpStatus.SUCCESS:
+                if (response.data[0] != null) {
+                options = {
+                    chart: {
+                    type: 'donut'
+                    },
+                    series: dataArray,
+                    labels: ["Not Started", "Ongoing", "Finished"],
+                    colors: ['#696969', '#ffa500', '#008000']
+                };
+                var chart = new ApexCharts(document.querySelector("#pre-sip-all-pie"), options);
+                    
+                chart.render();
+                } else {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: [0, 0, 0],
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                        
+                    };
+                    var chart = new ApexCharts(document.querySelector("#pre-sip-all-pie"), options);
+                        
+                    chart.render();
+                }
             break;  
         }
     });
@@ -94,36 +90,32 @@ const initDuringInternshipChart=()=> {
         dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
-        case HttpStatus.SUCCESS:
-            if (response.data[0] != null) {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#during-sip-all-pie"), options);
-                
-            chart.render();
-            } else {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: [0, 100],
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#during-sip-all-pie"), options);
-                
-            chart.render();
-            }
+            case HttpStatus.SUCCESS:
+                if (response.data[0] != null) {
+                    options = {
+                        chart: {
+                        type: 'donut'
+                        },
+                        series: dataArray,
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#during-sip-all-pie"), options);
+                    
+                    chart.render();
+                } else {
+                    options = {
+                        chart: {
+                        type: 'donut'
+                        },
+                        series: [0, 100],
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#during-sip-all-pie"), options);
+                        
+                    chart.render();
+                }
             break;  
         }
     });
@@ -140,36 +132,33 @@ const initEndInternshipChart=()=> {
         dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
-        case HttpStatus.SUCCESS:
-            if (response.data[0] != null) {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#end-sip-all-pie"), options);
-                
-            chart.render();
-            } else {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: [0, 0,0],
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                } 
-            };
-            var chart = new ApexCharts(document.querySelector("#end-sip-all-pie"), options);
-                
-            chart.render();
-            }
+        
+            case HttpStatus.SUCCESS:
+                if (response.data[0] != null) {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: dataArray,
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#end-sip-all-pie"), options);
+                        
+                    chart.render();
+                } else {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: [0, 0,0],
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#end-sip-all-pie"), options);
+                        
+                    chart.render();
+                }
             break;  
         }
     });
@@ -188,36 +177,32 @@ const displayFilteredPreInternshipChart=()=> {
         dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
-        case HttpStatus.SUCCESS:
-            if (response.data[0] != null) {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#pre-sip-filtered-pie"), options);
-                
-            chart.render();
-            } else {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: [0, 0, 0],
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#pre-sip-filtered-pie"), options);
-                
-            chart.render();
-            }
+            case HttpStatus.SUCCESS:
+                if (response.data[0] != null) {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: dataArray,
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                var chart = new ApexCharts(document.querySelector("#pre-sip-filtered-pie"), options);
+                    
+                chart.render();
+                } else {
+                options = {
+                    chart: {
+                        type: 'donut'
+                    },
+                    series: [0, 0, 0],
+                    labels: ["Not Started", "Ongoing", "Finished"],
+                    colors: ['#696969', '#ffa500', '#008000']
+                };
+                var chart = new ApexCharts(document.querySelector("#pre-sip-filtered-pie"), options);
+                    
+                chart.render();
+                }
             break;  
         }
     });
@@ -236,36 +221,32 @@ const displayFilteredDuringInternshipChart=()=> {
         dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
-        case HttpStatus.SUCCESS:
-            if (response.data[0] != null) {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#during-sip-filtered-pie"), options);
-                
-            chart.render();
-            } else {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: [0, 100],
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#during-sip-filtered-pie"), options);
-                
-            chart.render();
-            }
+            case HttpStatus.SUCCESS:
+                if (response.data[0] != null) {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: dataArray,
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#during-sip-filtered-pie"), options);
+                        
+                    chart.render();
+                } else {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: [0, 100],
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#during-sip-filtered-pie"), options);
+                        
+                    chart.render();
+                }
             break;  
         }
     });
@@ -284,36 +265,32 @@ const displayFilteredEndInternshipChart=()=> {
         dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
-        case HttpStatus.SUCCESS:
-            if (response.data[0] != null) {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: dataArray,
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#end-sip-filtered-pie"), options);
-                
-            chart.render();
-            } else {
-            options = {
-                chart: {
-                type: 'donut'
-                },
-                series: [0, 0,0],
-                labels: ["Not Started", "Ongoing", "Finished"],
-                fill: {
-                colors: ['#696969', '#ffa500', '#008000']
-                } 
-            };
-            var chart = new ApexCharts(document.querySelector("#end-sip-filtered-pie"), options);
-                
-            chart.render();
-            }
+            case HttpStatus.SUCCESS:
+                if (response.data[0] != null) {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: dataArray,
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#end-sip-filtered-pie"), options);
+                        
+                    chart.render();
+                } else {
+                    options = {
+                        chart: {
+                            type: 'donut'
+                        },
+                        series: [0, 0,0],
+                        labels: ["Not Started", "Ongoing", "Finished"],
+                        colors: ['#696969', '#ffa500', '#008000']
+                    };
+                    var chart = new ApexCharts(document.querySelector("#end-sip-filtered-pie"), options);
+                        
+                    chart.render();
+                }
             break;  
         }
     });

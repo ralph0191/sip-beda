@@ -22,9 +22,7 @@ const initPreInternshipChart=()=> {
             },
             series: dataArray,
             labels: ["Passed Requirements", "Remaining Requirments"],
-            fill: {
-              colors: ['#008000', '#696969']
-            },
+            colors: ['#008000', '#696969']
           };
           var chart = new ApexCharts(document.querySelector("#pre-internship-pie"), options);
             
@@ -36,15 +34,13 @@ const initPreInternshipChart=()=> {
             },
             series: [0, 100],
             labels: ["Passed Requirements", "Remaining Requirments"],
-            fill: {
-              colors: ['#008000', '#696969']
-            } 
+            colors: ['#008000', '#696969']
           };
           var chart = new ApexCharts(document.querySelector("#pre-internship-pie"), options);
             
           chart.render();
         }
-        break;  
+      break;  
     }
   });
 }
@@ -67,9 +63,7 @@ const initDuringInternshipChart=()=> {
             },
             series: dataArray,
             labels: ["Passed Requirements", "Remaining Requirments"],
-            fill: {
-              colors: ['#008000', '#696969']
-            },
+            colors: ['#008000', '#696969']
           };
           var chart = new ApexCharts(document.querySelector("#during-internship-pie"), options);
             
@@ -81,15 +75,13 @@ const initDuringInternshipChart=()=> {
             },
             series: [0, 100],
             labels: ["Passed Requirements", "Remaining Requirments"],
-            fill: {
-              colors: ['#008000', '#696969']
-            } 
+            colors: ['#008000', '#696969']
           };
           var chart = new ApexCharts(document.querySelector("#during-internship-pie"), options);
             
           chart.render();
         }
-        break;  
+      break;  
     }
   });
 }
@@ -113,9 +105,7 @@ const initEndInternshipChart=()=> {
             },
             series: dataArray,
             labels: ["Passed Requirements", "Remaining Requirments"],
-            fill: {
-              colors: ['#008000', '#696969']
-            },
+            colors: ['#008000', '#696969']
           };
           var chart = new ApexCharts(document.querySelector("#end-internship-pie"), options);
             
@@ -127,9 +117,7 @@ const initEndInternshipChart=()=> {
             },
             series: [0, 100],
             labels: ["Passed Requirements", "Remaining Requirments"],
-            fill: {
-              colors: ['#008000', '#696969']
-            } 
+            colors: ['#008000', '#696969']
           };
           var chart = new ApexCharts(document.querySelector("#end-internship-pie"), options);
             
