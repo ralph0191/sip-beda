@@ -45,6 +45,7 @@ const initPreInternshipChart=()=> {
 
         dataArray.push(parseInt(data[0].not_started));
         dataArray.push(parseInt(data[0].ongoing));
+        dataArray.push(parseInt(data[0].finished));
 
         switch(response.status) {
             case HttpStatus.SUCCESS:
