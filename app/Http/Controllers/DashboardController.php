@@ -17,13 +17,13 @@ class DashboardController extends Controller
     {   
         $data = InternshipData::where([
             ['student_id', '=', Auth::user()->student->id]
-            // []
         ])
             ->whereIn('internship_requirements_id', SipStatus::PRE_INTERNSHIP_ARRAY)
             ->addSelect(DB::raw('SUM(CASE WHEN status = 0 THEN 1 ELSE 0 end OR CASE WHEN status = 1 THEN 1 ELSE 0 END) AS not_completed'))
             ->addSelect(DB::raw('SUM(CASE WHEN status = 2 THEN 1 ELSE 0 end) AS completed '))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -32,13 +32,13 @@ class DashboardController extends Controller
     {   
         $data = InternshipData::where([
             ['student_id', '=', Auth::user()->student->id]
-            // []
         ])
             ->whereIn('internship_requirements_id', SipStatus::DURING_INTERNSHIP_ARRAY)
-            ->addSelect(DB::raw('SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END OR CASE WHEN status = 1 THEN 1 ELSE 0 end OR CASE WHEN status = 2 THEN 1 ELSE 0 END) AS not_completed'))
+            ->addSelect(DB::raw('SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END OR CASE WHEN status = 1 THEN 1 ELSE 0 END OR CASE WHEN status = 2 THEN 1 ELSE 0 END) AS not_completed'))
             ->addSelect(DB::raw('SUM(CASE WHEN status = 3 THEN 1 ELSE 0 END) AS completed '))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -47,13 +47,26 @@ class DashboardController extends Controller
     {   
         $data = InternshipData::where([
             ['student_id', '=', Auth::user()->student->id]
-            // []
-        ])
-            ->whereIn('internship_requirements_id', SipStatus::END_INTERNSHIP_ARRAY)
-            ->addSelect(DB::raw('SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END OR case when status = 1 then 1 ELSE 0 END OR CASE WHEN status = 2 THEN 1 ELSE 0 END) AS not_completed'))
-            ->addSelect(DB::raw('SUM(CASE WHEN status = 3 THEN 1 ELSE 0 END) AS completed '))->get();
+        ])->whereIn('internship_requirements_id', SipStatus::END_INTERNSHIP_ARRAY)
+        ->addSelect(DB::raw('SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END) AS not_completed'))
+        ->addSelect(DB::raw('SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END OR CASE WHEN status = 2 THEN 1 ELSE 0 END) AS pending_requirements'))
+        ->addSelect(DB::raw('SUM(CASE WHEN status = 3 THEN 1 ELSE 0 END) AS completed'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
+            'data' => $data
+        ]);
+    }
+
+    public function getLatestData()
+    {
+        $data = InternshipData::where([
+            ['student_id', '=', Auth::user()->student->id]
+        ])->orderByDesc('updated_at')
+        ->limit(5)->get();
+
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -66,7 +79,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN read_form = 1 THEN 1 ELSE 0 END) AS pending'))
         ->addSelect(DB::raw('SUM(CASE WHEN read_form = 2 THEN 1 ELSE 0 END) AS approved'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -79,7 +93,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS started'))
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -92,7 +107,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN end_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN end_internship_progress = 2 THEN 1 ELSE 0 END) AS started'))
         ->addSelect(DB::raw('SUM(CASE WHEN end_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -103,7 +119,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 1 THEN 1 ELSE 0 END) AS ongoing'))
         ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 2 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -125,7 +142,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -138,7 +156,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 1 THEN 1 ELSE 0 END) AS ongoing'))
         ->addSelect(DB::raw('SUM(CASE WHEN pre_internship_progress = 2 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -151,7 +170,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }
@@ -164,7 +184,8 @@ class DashboardController extends Controller
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 1 THEN 1 ELSE 0 END OR CASE WHEN during_internship_progress = 2 THEN 1 ELSE 0 END) AS ongoing'))
         ->addSelect(DB::raw('SUM(CASE WHEN during_internship_progress = 3 THEN 1 ELSE 0 END) AS finished'))->get();
 
-        return response()->json(['status'=> Response::HTTP_OK,
+        return response()->json([
+            'status'=> Response::HTTP_OK,
             'data' => $data
         ]);
     }

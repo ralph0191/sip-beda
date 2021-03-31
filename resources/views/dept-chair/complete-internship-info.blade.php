@@ -65,8 +65,8 @@
                                             </td>
                                             <td>
                                                 @if ($data->status == Status::PENDING)
-                                                    <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
-                                                    <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
+                                                    <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Decline</button> 
+                                                    <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approve</button> 
                                                 @endif
                                                 
                                             </td>
