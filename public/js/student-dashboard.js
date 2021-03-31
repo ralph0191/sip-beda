@@ -92,9 +92,9 @@ const initEndInternshipChart=()=> {
   $.when(ajax.fetch('/student/end-internship/chart')).done(function(response) {
     let data = response.data;
     let dataArray = [];
-    dataArray.push(parseInt(data[0].not_submitted));
-    dataArray.push(parseInt(data[0].pending));
-    dataArray.push(parseInt(data[0].submitted));
+    dataArray.push(parseInt(data[0].completed));
+    dataArray.push(parseInt(data[0].not_completed));
+    dataArray.push(parseInt(data[0].pending_requirements));
 
     switch(response.status) {
       case HttpStatus.SUCCESS:
@@ -104,8 +104,8 @@ const initEndInternshipChart=()=> {
               type: 'donut'
             },
             series: dataArray,
-            labels: ["Passed Requirements", "Remaining Requirments"],
-            colors: ['#008000', '#696969']
+            labels: ["Passed Requirements", "Remaining Requirments", "Pending Requirements"],
+            colors: ['#008000', '#696969', '#ffa500']
           };
           var chart = new ApexCharts(document.querySelector("#end-internship-pie"), options);
             
@@ -115,7 +115,7 @@ const initEndInternshipChart=()=> {
             chart: {
               type: 'donut'
             },
-            series: [0, 100],
+            series: [0, 0, 0],
             labels: ["Passed Requirements", "Remaining Requirments"],
             colors: ['#008000', '#696969']
           };

@@ -79,7 +79,7 @@ const initDuringInternshipChart=()=> {
                     chart: {
                         type: 'donut'
                     },
-                    series: [0, 0,0],
+                    series: [0, 0, 0],
                     labels: ["Not Started", "On-going", "Finished"],
                     colors: ['#696969', '#ffa500', '#008000']
                 };

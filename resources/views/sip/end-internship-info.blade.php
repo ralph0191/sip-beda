@@ -12,14 +12,17 @@
                     </div>
                     <div class="col-md-6">
                         <img src="{{asset('storage/photo/'. $student->user->picture)}}" style=" max-width: 4.5vw;
-                        height: auto;" alt="SIP SBCA" class="profilepic">
+                        height: auto;" alt="SIP SBCA" class="profilepic pull-right">
                     </div>
                 </div>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success pull-right" style="max-width: 100%;" data-id="{{$student->id}}" id="complete-btn">Complete Internship</button>
             </div>
         </div>
         <div class="content">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card-header">
                         <div class="card-body">          
                             <div class="table-full-width table-responsive">
@@ -65,8 +68,8 @@
                                             </td>
                                             <td>
                                                 @if ($data->status == Status::PENDING)
-                                                    <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Declined</button> 
-                                                    <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approved</button> 
+                                                    <button class="btn btn-danger decline-listener" data-id="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Decline</button> 
+                                                    <button class="btn btn-primary approve-listener" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}">Approve</button> 
                                                 @endif
                                                 
                                             </td>
@@ -79,16 +82,6 @@
                         </div>  
                     </div>  
                 </div>
-                <div class="col-md-2" style="padding-top:70px; padding-right:70px;">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-category">Complete Post-Internship</h4>
-                        </div>
-                        <div class="card-body">
-                        <button class="btn btn-success" style="max-width: 100%;" data-id="{{$student->id}}" id="complete-btn">Complete User</button>
-                        </div>
-                    </div>
-                </div>  
             </div>  
         </div>  
 

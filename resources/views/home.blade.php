@@ -20,7 +20,7 @@
                             <div id="end-internship-pie"></div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
@@ -34,7 +34,7 @@
                             </tbody>
                         </table>
                         <div id="table-pagination"></div>
-                    </div>
+                    </div> --}}
                 @elseif (Auth::user()->deptChair)
                     <div class="row">
                         <div class="col-md-4">
