@@ -145,10 +145,21 @@ class PreInternshipController extends Controller
         
     }
 
-    public function sipApprovedFile(Request $request)
+    public function sipActionFile(Request $request)
     {
         $internData = InternshipData::where('id', $request->dataId)->first();
         $internData->status = $request->status;
+
+        if ((int) $internData->status == SipStatus::DISAPPROVED) {
+
+            if (count($internData->internshipFiles) > 0) {
+                foreach ($internData->internshipFiles as $file) {
+                    Storage::delete($file->file_url);
+                    $file->delete();
+                }
+            }
+        }
+
         $internData->remarks = $request->remarks;
         $internData->update();
 

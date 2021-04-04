@@ -177,6 +177,16 @@ class EndOfInternshipController extends Controller
         $internData = InternshipData::where('id', $request->dataId)->first();
         $internData->status = $request->status;
         $internData->remarks = $request->remarks;
+
+        if ((int) $internData->status == SipStatus::DISAPPROVED) {
+
+            if (count($internData->internshipFiles) > 0) {
+                foreach ($internData->internshipFiles as $file) {
+                    Storage::delete($file->file_url);
+                    $file->delete();
+                }
+            }
+        }
         $internData->update();
 
         return response()->json(['status' => Response::HTTP_OK]);

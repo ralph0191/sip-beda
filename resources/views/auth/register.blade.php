@@ -15,7 +15,7 @@
                             <label for="student_number" class="col-md-4 col-form-label text-md-right">{{ __('Student Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="student_number" type="text" class="form-control @error('student_number') is-invalid @enderror" name="student_number" value="{{ old('student_number') }}" required autocomplete="student_number" autofocus>
+                                <input id="student_number" type="text" class="form-control @error('student_number') is-invalid @enderror" name="student_number" value="{{ old('student_number') }}" pattern="[0-9]" title="only accepts numbers" required autocomplete="student_number" autofocus>
 
                                 @error('student_number')
                                     <span class="invalid-feedback" role="alert">
